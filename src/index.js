@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './styles/index.scss';
 import 'normalize.css/normalize.css';
 import App from './components/app';
 import Amplify from 'aws-amplify';

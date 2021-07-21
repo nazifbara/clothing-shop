@@ -3,7 +3,6 @@ import LogoutIcon from './logout_icon';
 import { Link, useHistory } from 'react-router-dom';
 import { Auth, Hub } from 'aws-amplify';
 import Cart from '../../cart';
-import './header.css';
 
 function Header() {
   const [isAuthenticated, setIsAuthenticated] = useState();
@@ -37,8 +36,8 @@ function Header() {
   return (
     <header>
       <div className="Container">
-        <div className="HeaderBar">
-          <span className="AppName">
+        <nav>
+          <span className="app-name">
             <Link to="/">GameStore</Link>
           </span>
           <div>
@@ -50,7 +49,7 @@ function Header() {
               />
             ) : null}
           </div>
-        </div>
+        </nav>
       </div>
     </header>
   );
