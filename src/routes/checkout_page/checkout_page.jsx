@@ -1,5 +1,3 @@
-import './checkout_page.css';
-
 import { useState } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';

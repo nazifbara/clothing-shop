@@ -1,0 +1,14 @@
+.checkout {
+  @media (min-width: 53.125rem) {
+    & {
+      display: flex;
+      align-items: flex-start;
+      margin: 0.625rem 0.625rem;
+    }
+    
+    & > div {
+      width: 50%;
+      padding: 0 0.625rem;
+    }
+  }
+}
