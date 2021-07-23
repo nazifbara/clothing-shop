@@ -69,24 +69,24 @@ function AdminPage() {
   }
 
   return (
-    <div className="Container">
+    <div className="container">
       <h1>Add a game</h1>
       <div className="new-game">
         <form onSubmit={onSubmit}>
-          <div className="Field">
+          <div className="field">
             <label htmlFor="title">Title: </label>
             <input
-              className="Input"
+              className="input"
               name="title"
               onChange={onIputChange}
               id="title"
               value={form.title}
             />
           </div>
-          <div className="Field">
+          <div className="field">
             <label htmlFor="price">Price: </label>
             <input
-              className="Input"
+              className="input"
               name="price"
               onChange={onIputChange}
               id="price"
@@ -95,8 +95,8 @@ function AdminPage() {
               value={form.price}
             />
           </div>
-          <div className="Field">
-            <input className="Input" onChange={onImageSelect} type="file" />
+          <div className="field">
+            <input className="input" onChange={onImageSelect} type="file" />
           </div>
 
           <Button>{status === 'pending' ? 'Submitting...' : 'Submit'}</Button>

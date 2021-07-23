@@ -16,7 +16,7 @@ function CartPage() {
 
   if (getCartTotal() === 0) {
     return (
-      <div className="Container">
+      <div className="container">
         <h2>Your cart is currently empty.</h2>
         <div style={{ width: '200px', marginTop: '10px' }}>
           <Button>
@@ -27,7 +27,7 @@ function CartPage() {
     );
   }
   return (
-    <div className="Container">
+    <div className="container">
       <h2>Shopping Cart</h2>
       <table>
         <thead>

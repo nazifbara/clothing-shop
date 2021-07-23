@@ -22,7 +22,7 @@ function CheckoutPage() {
   );
 
   return (
-    <div className="Container">
+    <div className="container">
       <h2>Checkout</h2>
       <div className="checkout">
         <div style={{ marginBottom: '40px' }}>
@@ -95,43 +95,43 @@ function CheckoutForm({ stripe, elements }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="Field">
+      <div className="field">
         <label htmlFor="country">Country </label>
         <input
           value={form.country}
           onChange={handlInputChange}
-          className="Input"
+          className="input"
           required
           name="country"
           id="country"
         />
       </div>
-      <div className="Field">
+      <div className="field">
         <label htmlFor="city">City </label>
         <input
           value={form.city}
           onChange={handlInputChange}
-          className="Input"
+          className="input"
           name="city"
           id="city"
         />
       </div>
-      <div className="Field">
+      <div className="field">
         <label htmlFor="zipCode">ZIP-CODE </label>
         <input
           value={form.zipCode}
           onChange={handlInputChange}
-          className="Input"
+          className="input"
           name="zipCode"
           id="zipCode"
         />
       </div>
-      <div className="Field">
+      <div className="field">
         <label htmlFor="address">Address </label>
         <input
           value={form.address}
           onChange={handlInputChange}
-          className="Input"
+          className="input"
           required
           name="address"
           id="address"
@@ -140,10 +140,10 @@ function CheckoutForm({ stripe, elements }) {
       <p style={{ color: 'green', marginBottom: '10px' }}>
         Enter 4242424242424242 - 08/30 - 123 - 12345
       </p>
-      <div className="Field">
+      <div className="field">
         <label htmlFor="card">Card</label>
         <CardElement
-          className="Input"
+          className="input"
           options={{
             style: {
               base: {

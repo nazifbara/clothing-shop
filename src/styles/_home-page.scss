@@ -10,6 +10,12 @@
   text-align: center;
   font-size: 1.2rem;
   width: 100%;
+
+  @media (min-width: 37.5rem) {
+    & {
+      font-size: 2rem;
+    }
+  }
 }
 
 .carousel {
@@ -17,14 +23,12 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-}
 
-@media (min-width: 37.5rem) {
-  .title {
-    font-size: 2rem;
-  }
-
-  .carousel {
-    height: 31.25rem;
+  @media (min-width: 37.5rem) {
+    & {
+      height: 31.25rem;
+    }
   }
 }
+
+

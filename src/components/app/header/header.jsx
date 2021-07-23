@@ -35,7 +35,7 @@ function Header() {
   }
   return (
     <header>
-      <div className="Container">
+      <div className="container">
         <nav>
           <span className="app-name">
             <Link to="/">GameStore</Link>
