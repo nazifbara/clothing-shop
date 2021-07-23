@@ -3,7 +3,6 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 import { useHistory } from 'react-router-dom';
 import { API, graphqlOperation, Storage } from 'aws-amplify';
 import { v4 as uuid } from 'uuid';
-import './admin_page.css';
 import Button from '../../components/button';
 import Message from '../../components/message';
 import { currentUserIsAdmin, getCents } from '../../utils';
@@ -72,14 +71,8 @@ function AdminPage() {
   return (
     <div className="Container">
       <h1>Add a game</h1>
-      <form onSubmit={onSubmit} className="NewArticleForm">
-        <div className="Preview">
-          <div>
-            <span>Image preview</span>
-          </div>
-          <img src={imagePreview} alt="" />
-        </div>
-        <div>
+      <div className="new-game">
+        <form onSubmit={onSubmit}>
           <div className="Field">
             <label htmlFor="title">Title: </label>
             <input
@@ -111,8 +104,14 @@ function AdminPage() {
           {status === 'resolved' ? (
             <Message type="succed">{`Game successfully added`}</Message>
           ) : null}
+        </form>
+        <div className="new-game__image-preview">
+          <div>
+            <span>Image preview</span>
+          </div>
+          <img src={imagePreview} alt="" />
         </div>
-      </form>
+      </div>
     </div>
   );
 }
