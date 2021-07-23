@@ -1,4 +1,3 @@
-import './cart_page.css';
 import { Link } from 'react-router-dom';
 import PlusIcon from './plus_icon';
 import MinusIcon from './minus_icon';
@@ -53,14 +52,14 @@ function CartPage() {
                 <div className="qty-picker">
                   <button
                     onClick={() => onQuantityChange(i, i.quantity + 1)}
-                    className="qty-btn"
+                    className="qty-picker__btn"
                   >
                     <PlusIcon />
                   </button>
                   <span>{i.quantity}</span>
                   <button
                     onClick={() => onQuantityChange(i, i.quantity - 1)}
-                    className="qty-btn"
+                    className="qty-picker__btn"
                   >
                     <MinusIcon />
                   </button>
