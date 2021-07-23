@@ -1,0 +1,17 @@
+.message {
+  display: block;
+  border: 2px solid gray;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+
+  &.succed {
+    background-color: greenyellow;
+    color: #0d1b2a;
+  }
+  
+  &.failed {
+    background-color: #d90429;
+    color: #edf2f4;
+  }
+}
