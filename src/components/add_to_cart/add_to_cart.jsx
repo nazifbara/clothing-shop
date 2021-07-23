@@ -11,9 +11,7 @@ function AddToCart({ item }) {
       Remove from cart
     </Button>
   ) : (
-    <Button type="primary" onClick={() => onItemAdd(item)}>
-      Add to cart
-    </Button>
+    <Button onClick={() => onItemAdd(item)}>Add to cart</Button>
   );
 }
 

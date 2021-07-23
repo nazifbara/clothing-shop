@@ -156,9 +156,7 @@ function CheckoutForm({ stripe, elements }) {
           }}
         />
       </div>
-      <Button type="primary">
-        {status === 'pending' ? 'processing...' : 'Buy'}
-      </Button>
+      <Button>{status === 'pending' ? 'processing...' : 'Buy'}</Button>
       {status === 'rejected' && (
         <Message type="failed">{error.message}</Message>
       )}

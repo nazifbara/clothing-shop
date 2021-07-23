@@ -106,9 +106,7 @@ function AdminPage() {
             <input className="Input" onChange={onImageSelect} type="file" />
           </div>
 
-          <Button type="primary">
-            {status === 'pending' ? 'Submitting...' : 'Submit'}
-          </Button>
+          <Button>{status === 'pending' ? 'Submitting...' : 'Submit'}</Button>
           {error ? <Message type="failed">{error.message}</Message> : null}
           {status === 'resolved' ? (
             <Message type="succed">{`Game successfully added`}</Message>

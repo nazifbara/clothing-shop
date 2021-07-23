@@ -20,7 +20,7 @@ function CartPage() {
       <div className="Container">
         <h2>Your cart is currently empty.</h2>
         <div style={{ width: '200px', marginTop: '10px' }}>
-          <Button type="primary">
+          <Button>
             <Link to="/">Return To Shop</Link>
           </Button>
         </div>
@@ -76,7 +76,7 @@ function CartPage() {
           <strong>Total: {printPrice(getCartTotal())}</strong>
         </p>
       </div>
-      <Button type="primary">
+      <Button>
         <Link to="/checkout">Procced to checkout</Link>
       </Button>
     </div>
