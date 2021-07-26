@@ -47,7 +47,7 @@ function HomePage() {
       >
         <h2 className="title">Play Has No Limits</h2>
         {IMAGES_SRC.map((src) => (
-          <SwiperSlide>
+          <SwiperSlide key={src}>
             <div
               className="carousel"
               style={{
