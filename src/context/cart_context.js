@@ -34,6 +34,11 @@ export function CartProvider(props) {
 
   function onQuantityChange(cartItem, quantity) {
     const { id, title, price } = cartItem;
+
+    if (quantity === 0) {
+      return;
+    }
+
     const itemIndex = cartItems.findIndex((i) => i.id === id);
     const newCartItems = [
       ...cartItems.slice(0, itemIndex),
