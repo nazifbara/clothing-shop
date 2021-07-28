@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import PlusIcon from './plus_icon';
-import MinusIcon from './minus_icon';
+import { FiPlusCircle, FiMinusCircle } from 'react-icons/fi';
 import Button from '../../components/button';
 import { useCart } from '../../context/cart_context';
 import { printPrice } from '../../utils';
@@ -50,19 +49,15 @@ function CartPage() {
               <td>{printPrice(i.price)}</td>
               <td>
                 <div className="qty-picker">
-                  <button
+                  <FiPlusCircle
                     onClick={() => onQuantityChange(i, i.quantity + 1)}
                     className="qty-picker__btn"
-                  >
-                    <PlusIcon />
-                  </button>
+                  />
                   <span>{i.quantity}</span>
-                  <button
+                  <FiMinusCircle
                     onClick={() => onQuantityChange(i, i.quantity - 1)}
                     className="qty-picker__btn"
-                  >
-                    <MinusIcon />
-                  </button>
+                  />
                 </div>
               </td>
               <td>{printPrice(getItemTotal(i))}</td>

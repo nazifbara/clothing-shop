@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import LogoutIcon from './logout_icon';
+import { FiLogOut } from 'react-icons/fi';
 import { Link, useHistory } from 'react-router-dom';
 import { Auth, Hub } from 'aws-amplify';
 import Cart from '../../cart';
@@ -43,9 +43,12 @@ function Header() {
           <div>
             <Cart />
             {isAuthenticated ? (
-              <LogoutIcon
+              <FiLogOut
                 onClick={signOut}
-                style={{ marginLeft: '1rem', cursor: 'pointer' }}
+                style={{
+                  marginLeft: '1rem',
+                  cursor: 'pointer',
+                }}
               />
             ) : null}
           </div>
