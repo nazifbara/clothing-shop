@@ -62,9 +62,11 @@ function HomePage() {
       {error && <Message type="failed">Something went wrong...</Message>}
       {status === 'pending' && <span>Loading...</span>}
       {status === 'resolved' && (
-        <GameList list={data}>
-          {(item) => <Game key={item.id} item={item} />}
-        </GameList>
+        <section className="container">
+          <GameList list={data}>
+            {(item) => <Game key={item.id} item={item} />}
+          </GameList>
+        </section>
       )}
     </div>
   );
