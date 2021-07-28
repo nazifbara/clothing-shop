@@ -26,9 +26,6 @@ const IMAGES_SRC = [
 
 function HomePage() {
   const { status, data, error, run } = useAsync();
-  if (error) {
-    throw error;
-  }
 
   useEffect(() => {
     run(fetchGames());
