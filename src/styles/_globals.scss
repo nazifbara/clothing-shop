@@ -18,14 +18,14 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: green;
   box-shadow: 0 0 0px 1000px #000 inset;
   transition: background-color 5000s ease-in-out 0s;
-  caret-color: #edf2f4;
+  caret-color: $text-color;
 }
 
 body {
   font-family: 'Lato', sans-serif;
   padding-top: 50px;
-  color: #edf2f4;
-  background-color: #0d1b2a;
+  color: $text-color;
+  background-color: $primary-color;
 }
 
 img {
@@ -40,12 +40,12 @@ table {
 th,
 td {
   text-align: left;
-  border-bottom: 1px solid #edf2f4;
+  border-bottom: 1px solid $text-color;
   padding: 0.5rem;
 }
 
 tr:nth-child(even) {
-  background-color: #1b263b;
+  background-color: $bg-color;
 }
 
 .container {
@@ -64,16 +64,16 @@ tr:nth-child(even) {
     position: absolute;
     top: -0.5rem;
     left: 0.5rem;
-    background-color: #0d1b2a;
+    background-color: $primary-color;
     padding: 0 0.1875rem;
   }
 }
 
 .input {
-  background-color: #0d1b2a;
+  background-color: $primary-color;
   border-radius: 5px;
-  border: 2px solid #edf2f4;
-  color: #edf2f4;
+  border: 2px solid $text-color;
+  color: $text-color;
   padding: 0.625rem;
   width: 100%;
 }
