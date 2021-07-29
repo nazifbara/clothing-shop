@@ -58,7 +58,7 @@ function CheckoutPage() {
 
 function CheckoutForm({ stripe, elements }) {
   const { cartItems, getCartTotal, clearCart } = useCart();
-  const { status, error, run } = useAsync();
+  const { status, run } = useAsync();
   const [form, setForm] = useState(initialFormState);
 
   function handleSubmit(e) {
@@ -156,10 +156,12 @@ function CheckoutForm({ stripe, elements }) {
       </div>
       <Button>{status === 'pending' ? 'processing...' : 'Buy'}</Button>
       {status === 'rejected' && (
-        <Message type="failed">{error.message}</Message>
+        <Message type="danger">
+          Something went wrong. Please refresh the page and try again
+        </Message>
       )}
       {status === 'resolved' && (
-        <Message type="succed">Successfully ordered</Message>
+        <Message type="success">Successfully ordered</Message>
       )}
     </form>
   );

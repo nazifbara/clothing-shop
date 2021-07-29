@@ -100,9 +100,11 @@ function AdminPage() {
           </div>
 
           <Button>{status === 'pending' ? 'Submitting...' : 'Submit'}</Button>
-          {error ? <Message type="failed">{error.message}</Message> : null}
+          {error ? (
+            <Message type="danger">Something went wrong...</Message>
+          ) : null}
           {status === 'resolved' ? (
-            <Message type="succed">{`Game successfully added`}</Message>
+            <Message type="success">{`Game successfully added`}</Message>
           ) : null}
         </form>
         <div className="new-game__image-preview">

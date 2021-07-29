@@ -1,6 +1,5 @@
 .new-game {
-  margin-bottom: .3125rem;
-  
+  margin-bottom: 0.3125rem;
 
   &__image-preview {
     margin-top: 1.25rem;
@@ -13,12 +12,12 @@
       justify-content: space-between;
       align-items: flex-start;
     }
-    
-    & :nth-child(1) {
+
+    & > :nth-child(1) {
       order: 2;
     }
 
-    & :nth-child(2) {
+    & > :nth-child(2) {
       order: 1;
     }
 
@@ -31,5 +30,4 @@
       width: 47%;
     }
   }
-
 }

@@ -25,8 +25,7 @@ const IMAGES_SRC = [
 ];
 
 function HomePage() {
-  const { status, data, error, run } = useAsync();
-
+  const { status, data, run } = useAsync();
   useEffect(() => {
     run(fetchGames());
   }, [run]);
@@ -59,15 +58,19 @@ function HomePage() {
           </SwiperSlide>
         ))}
       </Swiper>
-      {error && <Message type="failed">Something went wrong...</Message>}
-      {status === 'pending' && <span>Loading...</span>}
-      {status === 'resolved' && (
-        <section className="container">
+      <section className="container">
+        {status === 'rejected' && (
+          <Message type="danger">
+            Something went wrong. Please refresh the page.
+          </Message>
+        )}
+        {status === 'pending' && <span>Loading...</span>}
+        {status === 'resolved' && (
           <GameList list={data}>
             {(item) => <Game key={item.id} item={item} />}
           </GameList>
-        </section>
-      )}
+        )}
+      </section>
     </div>
   );
 }
