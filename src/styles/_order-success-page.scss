@@ -1,0 +1,32 @@
+.order-success {
+  display: flex;
+  flex-direction: column;
+  color: greenyellow;
+  height: 10rem;
+  justify-content: space-between;
+  align-items: center;
+
+  & svg {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  & button {
+    max-width: 18.75rem;
+  }
+
+  @media (min-width: 48rem) {
+    & {
+      height: 14.375rem;
+    }
+
+    & svg {
+      width: 7.5rem;
+      height: 7.5rem;
+    }
+
+    & p {
+      font-size: 1.875rem;
+    }
+  }
+}

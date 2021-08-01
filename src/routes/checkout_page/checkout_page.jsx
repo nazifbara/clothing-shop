@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import {
@@ -7,6 +7,7 @@ import {
   ElementsConsumer,
 } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import { useHistory } from 'react-router-dom';
 
 import useAsync from '../../hooks/use_async';
 import { processOrder } from '../../api/mutations';
@@ -58,8 +59,15 @@ function CheckoutPage() {
 
 function CheckoutForm({ stripe, elements }) {
   const { cartItems, getCartTotal, clearCart } = useCart();
+  const history = useHistory();
   const { status, run } = useAsync();
   const [form, setForm] = useState(initialFormState);
+
+  useEffect(() => {
+    if (status === 'resolved') {
+      history.push('/order-success');
+    }
+  }, [status, history]);
 
   function handleSubmit(e) {
     const { address, country } = form;
@@ -160,9 +168,9 @@ function CheckoutForm({ stripe, elements }) {
           Something went wrong. Please refresh the page and try again
         </Message>
       )}
-      {status === 'resolved' && (
+      {/* {status === 'resolved' && (
         <Message type="success">Successfully ordered</Message>
-      )}
+      )} */}
     </form>
   );
 }
