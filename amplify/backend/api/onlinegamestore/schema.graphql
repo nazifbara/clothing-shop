@@ -1,20 +1,97 @@
+type Platform
+  @model
+  @auth(
+    rules: [
+      { allow: private, operations: [read] }
+      { allow: public, operations: [read] }
+      {
+        allow: groups
+        groups: ["Admin"]
+        operations: [read, create, update, delete]
+      }
+    ]
+  ) {
+  id: ID!
+  name: String!
+  games: [Game] @connection(keyName: "byPlatform", fields: ["id"])
+}
+
+type Publisher
+  @model
+  @auth(
+    rules: [
+      { allow: private, operations: [read] }
+      { allow: public, operations: [read] }
+      {
+        allow: groups
+        groups: ["Admin"]
+        operations: [read, create, update, delete]
+      }
+    ]
+  ) {
+  id: ID!
+  name: String!
+  games: [Game] @connection(keyName: "byPublisher", fields: ["id"])
+}
+
 type Game
   @model(subscriptions: null)
   @auth(
     rules: [
-      # allow admins to create, update and delete games
       { allow: groups, groups: ["Admin"] }
-      # allow all authenticated users to view games
       { allow: private, operations: [read] }
-      # allow all guest users (not authenticated) to view games
+      { allow: public, operations: [read] }
+    ]
+  )
+  @key(name: "byPublisher", fields: ["publisher_id"])
+  @key(name: "byPlatform", fields: ["platform_id"]) {
+  id: ID!
+  title: String!
+  description: String
+  trailerURL: AWSURL
+  imageKey: String
+  price: Int
+  recommended_age: String
+  release_date: AWSDate
+  types: [GameType] @connection(keyName: "byGame", fields: ["id"])
+  orders: [GameOrder] @connection(keyName: "byGame", fields: ["id"])
+  publisher_id: ID
+  platform_id: ID
+  platform: Platform @connection(fields: ["platform_id"])
+  publisher: Publisher @connection(fields: ["publisher_id"])
+}
+
+type Type
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      { allow: groups, groups: ["Admin"] }
+      { allow: private, operations: [read] }
       { allow: public, operations: [read] }
     ]
   ) {
   id: ID!
-  title: String!
-  imageKey: String
-  price: Int
-  orders: [GameOrder] @connection(keyName: "byGame", fields: ["id"])
+  name: String!
+  games: [GameType] @connection(keyName: "byType", fields: ["id"])
+  short_name: String
+}
+
+type GameType
+  @model(queries: null, subscriptions: null)
+  @key(name: "byGame", fields: ["game_id", "type_id"])
+  @key(name: "byType", fields: ["type_id", "game_id"])
+  @auth(
+    rules: [
+      { allow: groups, groups: ["Admin"] }
+      { allow: private, operations: [read] }
+      { allow: public, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  game_id: ID!
+  type_id: ID!
+  game: Game @connection(fields: ["game_id"])
+  type: Type @connection(fields: ["type_id"])
 }
 
 type GameOrder
@@ -23,7 +100,6 @@ type GameOrder
   @key(name: "byOrder", fields: ["order_id", "game_id"])
   @auth(
     rules: [
-      # allow admins to create gameorders for customers by using customer email in lambda
       { allow: owner, identityClaim: "email", ownerField: "customer" }
       { allow: groups, groups: ["Admin"] }
     ]
@@ -39,9 +115,7 @@ type Order
   @model(subscriptions: null)
   @auth(
     rules: [
-      # only owner can see his orders
       { allow: owner, identityClaim: "email", ownerField: "user" }
-      # allow admins to view orders
       { allow: groups, groups: ["Admin"] }
     ]
   )

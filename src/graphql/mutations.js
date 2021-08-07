@@ -6,6 +6,228 @@ export const processOrder = /* GraphQL */ `
     processOrder(input: $input)
   }
 `;
+export const createPlatform = /* GraphQL */ `
+  mutation CreatePlatform(
+    $input: CreatePlatformInput!
+    $condition: ModelPlatformConditionInput
+  ) {
+    createPlatform(input: $input, condition: $condition) {
+      id
+      name
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      games {
+        items {
+          id
+          title
+          description
+          trailerURL
+          imageKey
+          price
+          recommended_age
+          release_date
+          publisher_id
+          platform_id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+    }
+  }
+`;
+export const updatePlatform = /* GraphQL */ `
+  mutation UpdatePlatform(
+    $input: UpdatePlatformInput!
+    $condition: ModelPlatformConditionInput
+  ) {
+    updatePlatform(input: $input, condition: $condition) {
+      id
+      name
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      games {
+        items {
+          id
+          title
+          description
+          trailerURL
+          imageKey
+          price
+          recommended_age
+          release_date
+          publisher_id
+          platform_id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+    }
+  }
+`;
+export const deletePlatform = /* GraphQL */ `
+  mutation DeletePlatform(
+    $input: DeletePlatformInput!
+    $condition: ModelPlatformConditionInput
+  ) {
+    deletePlatform(input: $input, condition: $condition) {
+      id
+      name
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      games {
+        items {
+          id
+          title
+          description
+          trailerURL
+          imageKey
+          price
+          recommended_age
+          release_date
+          publisher_id
+          platform_id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+    }
+  }
+`;
+export const createPublisher = /* GraphQL */ `
+  mutation CreatePublisher(
+    $input: CreatePublisherInput!
+    $condition: ModelPublisherConditionInput
+  ) {
+    createPublisher(input: $input, condition: $condition) {
+      id
+      name
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      games {
+        items {
+          id
+          title
+          description
+          trailerURL
+          imageKey
+          price
+          recommended_age
+          release_date
+          publisher_id
+          platform_id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+    }
+  }
+`;
+export const updatePublisher = /* GraphQL */ `
+  mutation UpdatePublisher(
+    $input: UpdatePublisherInput!
+    $condition: ModelPublisherConditionInput
+  ) {
+    updatePublisher(input: $input, condition: $condition) {
+      id
+      name
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      games {
+        items {
+          id
+          title
+          description
+          trailerURL
+          imageKey
+          price
+          recommended_age
+          release_date
+          publisher_id
+          platform_id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+    }
+  }
+`;
+export const deletePublisher = /* GraphQL */ `
+  mutation DeletePublisher(
+    $input: DeletePublisherInput!
+    $condition: ModelPublisherConditionInput
+  ) {
+    deletePublisher(input: $input, condition: $condition) {
+      id
+      name
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      games {
+        items {
+          id
+          title
+          description
+          trailerURL
+          imageKey
+          price
+          recommended_age
+          release_date
+          publisher_id
+          platform_id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+    }
+  }
+`;
 export const createGame = /* GraphQL */ `
   mutation CreateGame(
     $input: CreateGameInput!
@@ -14,21 +236,74 @@ export const createGame = /* GraphQL */ `
     createGame(input: $input, condition: $condition) {
       id
       title
+      description
+      trailerURL
       imageKey
       price
+      recommended_age
+      release_date
+      publisher_id
+      platform_id
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      platform {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        games {
+          nextToken
+          startedAt
+        }
+      }
+      publisher {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        games {
+          nextToken
+          startedAt
+        }
+      }
+      types {
+        items {
+          id
+          game_id
+          type_id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
       orders {
         items {
           id
           game_id
           order_id
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
           customer
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -40,21 +315,74 @@ export const updateGame = /* GraphQL */ `
     updateGame(input: $input, condition: $condition) {
       id
       title
+      description
+      trailerURL
       imageKey
       price
+      recommended_age
+      release_date
+      publisher_id
+      platform_id
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      platform {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        games {
+          nextToken
+          startedAt
+        }
+      }
+      publisher {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        games {
+          nextToken
+          startedAt
+        }
+      }
+      types {
+        items {
+          id
+          game_id
+          type_id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
       orders {
         items {
           id
           game_id
           order_id
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
           customer
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -66,21 +394,383 @@ export const deleteGame = /* GraphQL */ `
     deleteGame(input: $input, condition: $condition) {
       id
       title
+      description
+      trailerURL
       imageKey
       price
+      recommended_age
+      release_date
+      publisher_id
+      platform_id
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      platform {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        games {
+          nextToken
+          startedAt
+        }
+      }
+      publisher {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        games {
+          nextToken
+          startedAt
+        }
+      }
+      types {
+        items {
+          id
+          game_id
+          type_id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
       orders {
         items {
           id
           game_id
           order_id
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
           customer
         }
         nextToken
+        startedAt
       }
+    }
+  }
+`;
+export const createType = /* GraphQL */ `
+  mutation CreateType(
+    $input: CreateTypeInput!
+    $condition: ModelTypeConditionInput
+  ) {
+    createType(input: $input, condition: $condition) {
+      id
+      name
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
+      games {
+        items {
+          id
+          game_id
+          type_id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+    }
+  }
+`;
+export const updateType = /* GraphQL */ `
+  mutation UpdateType(
+    $input: UpdateTypeInput!
+    $condition: ModelTypeConditionInput
+  ) {
+    updateType(input: $input, condition: $condition) {
+      id
+      name
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      games {
+        items {
+          id
+          game_id
+          type_id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+    }
+  }
+`;
+export const deleteType = /* GraphQL */ `
+  mutation DeleteType(
+    $input: DeleteTypeInput!
+    $condition: ModelTypeConditionInput
+  ) {
+    deleteType(input: $input, condition: $condition) {
+      id
+      name
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      games {
+        items {
+          id
+          game_id
+          type_id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+    }
+  }
+`;
+export const createGameType = /* GraphQL */ `
+  mutation CreateGameType(
+    $input: CreateGameTypeInput!
+    $condition: ModelGameTypeConditionInput
+  ) {
+    createGameType(input: $input, condition: $condition) {
+      id
+      game_id
+      type_id
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      game {
+        id
+        title
+        description
+        trailerURL
+        imageKey
+        price
+        recommended_age
+        release_date
+        publisher_id
+        platform_id
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        platform {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        publisher {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        types {
+          nextToken
+          startedAt
+        }
+        orders {
+          nextToken
+          startedAt
+        }
+      }
+      type {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        games {
+          nextToken
+          startedAt
+        }
+      }
+    }
+  }
+`;
+export const updateGameType = /* GraphQL */ `
+  mutation UpdateGameType(
+    $input: UpdateGameTypeInput!
+    $condition: ModelGameTypeConditionInput
+  ) {
+    updateGameType(input: $input, condition: $condition) {
+      id
+      game_id
+      type_id
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      game {
+        id
+        title
+        description
+        trailerURL
+        imageKey
+        price
+        recommended_age
+        release_date
+        publisher_id
+        platform_id
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        platform {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        publisher {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        types {
+          nextToken
+          startedAt
+        }
+        orders {
+          nextToken
+          startedAt
+        }
+      }
+      type {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        games {
+          nextToken
+          startedAt
+        }
+      }
+    }
+  }
+`;
+export const deleteGameType = /* GraphQL */ `
+  mutation DeleteGameType(
+    $input: DeleteGameTypeInput!
+    $condition: ModelGameTypeConditionInput
+  ) {
+    deleteGameType(input: $input, condition: $condition) {
+      id
+      game_id
+      type_id
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      game {
+        id
+        title
+        description
+        trailerURL
+        imageKey
+        price
+        recommended_age
+        release_date
+        publisher_id
+        platform_id
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        platform {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        publisher {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        types {
+          nextToken
+          startedAt
+        }
+        orders {
+          nextToken
+          startedAt
+        }
+      }
+      type {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        games {
+          nextToken
+          startedAt
+        }
+      }
     }
   }
 `;
@@ -93,6 +783,55 @@ export const createGameOrder = /* GraphQL */ `
       id
       game_id
       order_id
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      game {
+        id
+        title
+        description
+        trailerURL
+        imageKey
+        price
+        recommended_age
+        release_date
+        publisher_id
+        platform_id
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        platform {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        publisher {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        types {
+          nextToken
+          startedAt
+        }
+        orders {
+          nextToken
+          startedAt
+        }
+      }
+      customer
       order {
         id
         user
@@ -102,26 +841,16 @@ export const createGameOrder = /* GraphQL */ `
         city
         zipCode
         address
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
         games {
           nextToken
+          startedAt
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
-      game {
-        id
-        title
-        imageKey
-        price
-        orders {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      customer
     }
   }
 `;
@@ -134,6 +863,55 @@ export const updateGameOrder = /* GraphQL */ `
       id
       game_id
       order_id
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      game {
+        id
+        title
+        description
+        trailerURL
+        imageKey
+        price
+        recommended_age
+        release_date
+        publisher_id
+        platform_id
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        platform {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        publisher {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        types {
+          nextToken
+          startedAt
+        }
+        orders {
+          nextToken
+          startedAt
+        }
+      }
+      customer
       order {
         id
         user
@@ -143,26 +921,16 @@ export const updateGameOrder = /* GraphQL */ `
         city
         zipCode
         address
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
         games {
           nextToken
+          startedAt
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
-      game {
-        id
-        title
-        imageKey
-        price
-        orders {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      customer
     }
   }
 `;
@@ -175,6 +943,55 @@ export const deleteGameOrder = /* GraphQL */ `
       id
       game_id
       order_id
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      game {
+        id
+        title
+        description
+        trailerURL
+        imageKey
+        price
+        recommended_age
+        release_date
+        publisher_id
+        platform_id
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        platform {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        publisher {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        types {
+          nextToken
+          startedAt
+        }
+        orders {
+          nextToken
+          startedAt
+        }
+      }
+      customer
       order {
         id
         user
@@ -184,26 +1001,16 @@ export const deleteGameOrder = /* GraphQL */ `
         city
         zipCode
         address
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
         games {
           nextToken
+          startedAt
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
-      game {
-        id
-        title
-        imageKey
-        price
-        orders {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      customer
     }
   }
 `;
@@ -221,19 +1028,26 @@ export const createOrder = /* GraphQL */ `
       city
       zipCode
       address
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       games {
         items {
           id
           game_id
           order_id
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
           customer
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -251,19 +1065,26 @@ export const updateOrder = /* GraphQL */ `
       city
       zipCode
       address
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       games {
         items {
           id
           game_id
           order_id
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
           customer
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -281,19 +1102,26 @@ export const deleteOrder = /* GraphQL */ `
       city
       zipCode
       address
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       games {
         items {
           id
           game_id
           order_id
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
           customer
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
