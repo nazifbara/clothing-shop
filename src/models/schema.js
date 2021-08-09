@@ -382,6 +382,7 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "type"
                     }
+<<<<<<< HEAD
                 },
                 "short_name": {
                     "name": "short_name",
@@ -389,6 +390,8 @@ export const schema = {
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
+=======
+>>>>>>> a0ddac564aa218cdc67fe91183a5e4be7d183acb
                 }
             },
             "syncable": true,
@@ -749,5 +752,9 @@ export const schema = {
         }
     },
     "nonModels": {},
+<<<<<<< HEAD
     "version": "359b795bfb9c034bf5fc67224246d7a7"
+=======
+    "version": "c3a3a696cf3bad0587f85ef2f54bcefb"
+>>>>>>> a0ddac564aa218cdc67fe91183a5e4be7d183acb
 };

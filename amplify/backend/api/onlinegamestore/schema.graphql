@@ -72,8 +72,8 @@ type Type
   ) {
   id: ID!
   name: String!
-  games: [GameType] @connection(keyName: "byType", fields: ["id"])
   short_name: String
+  games: [GameType] @connection(keyName: "byType", fields: ["id"])
 }
 
 type GameType

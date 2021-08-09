@@ -1,18 +1,23 @@
-import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplify/datastore";
+import {
+  ModelInit,
+  MutableModel,
+  PersistentModelConstructor,
+} from '@aws-amplify/datastore';
 
 export enum OrderStatus {
-  SUCCESS = "SUCCESS",
-  FAILED = "FAILED"
+  SUCCESS = 'SUCCESS',
+  FAILED = 'FAILED',
 }
-
-
 
 export declare class Platform {
   readonly id: string;
   readonly name: string;
   readonly games?: (Game | null)[];
   constructor(init: ModelInit<Platform>);
-  static copyOf(source: Platform, mutator: (draft: MutableModel<Platform>) => MutableModel<Platform> | void): Platform;
+  static copyOf(
+    source: Platform,
+    mutator: (draft: MutableModel<Platform>) => MutableModel<Platform> | void
+  ): Platform;
 }
 
 export declare class Game {
@@ -29,7 +34,10 @@ export declare class Game {
   readonly platform?: Platform;
   readonly publisher?: Publisher;
   constructor(init: ModelInit<Game>);
-  static copyOf(source: Game, mutator: (draft: MutableModel<Game>) => MutableModel<Game> | void): Game;
+  static copyOf(
+    source: Game,
+    mutator: (draft: MutableModel<Game>) => MutableModel<Game> | void
+  ): Game;
 }
 
 export declare class GameType {
@@ -37,7 +45,10 @@ export declare class GameType {
   readonly game?: Game;
   readonly type?: Type;
   constructor(init: ModelInit<GameType>);
-  static copyOf(source: GameType, mutator: (draft: MutableModel<GameType>) => MutableModel<GameType> | void): GameType;
+  static copyOf(
+    source: GameType,
+    mutator: (draft: MutableModel<GameType>) => MutableModel<GameType> | void
+  ): GameType;
 }
 
 export declare class Type {
@@ -46,7 +57,10 @@ export declare class Type {
   readonly games?: (GameType | null)[];
   readonly short_name?: string;
   constructor(init: ModelInit<Type>);
-  static copyOf(source: Type, mutator: (draft: MutableModel<Type>) => MutableModel<Type> | void): Type;
+  static copyOf(
+    source: Type,
+    mutator: (draft: MutableModel<Type>) => MutableModel<Type> | void
+  ): Type;
 }
 
 export declare class GameOrder {
@@ -54,7 +68,10 @@ export declare class GameOrder {
   readonly game?: Game;
   readonly order?: Order;
   constructor(init: ModelInit<GameOrder>);
-  static copyOf(source: GameOrder, mutator: (draft: MutableModel<GameOrder>) => MutableModel<GameOrder> | void): GameOrder;
+  static copyOf(
+    source: GameOrder,
+    mutator: (draft: MutableModel<GameOrder>) => MutableModel<GameOrder> | void
+  ): GameOrder;
 }
 
 export declare class Order {
@@ -68,7 +85,10 @@ export declare class Order {
   readonly address?: string;
   readonly games?: (GameOrder | null)[];
   constructor(init: ModelInit<Order>);
-  static copyOf(source: Order, mutator: (draft: MutableModel<Order>) => MutableModel<Order> | void): Order;
+  static copyOf(
+    source: Order,
+    mutator: (draft: MutableModel<Order>) => MutableModel<Order> | void
+  ): Order;
 }
 
 export declare class Publisher {
@@ -76,5 +96,8 @@ export declare class Publisher {
   readonly name: string;
   readonly games?: (Game | null)[];
   constructor(init: ModelInit<Publisher>);
-  static copyOf(source: Publisher, mutator: (draft: MutableModel<Publisher>) => MutableModel<Publisher> | void): Publisher;
+  static copyOf(
+    source: Publisher,
+    mutator: (draft: MutableModel<Publisher>) => MutableModel<Publisher> | void
+  ): Publisher;
 }
