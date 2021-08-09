@@ -30,6 +30,13 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "platform"
                     }
+                },
+                "short_name": {
+                    "name": "short_name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
                 }
             },
             "syncable": true,
@@ -382,13 +389,6 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "type"
                     }
-                },
-                "short_name": {
-                    "name": "short_name",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
                 }
             },
             "syncable": true,
@@ -749,5 +749,5 @@ export const schema = {
         }
     },
     "nonModels": {},
-    "version": "359b795bfb9c034bf5fc67224246d7a7"
+    "version": "815009d596fae734f9bf36f4a0b84362"
 };

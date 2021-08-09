@@ -14,6 +14,7 @@ type Platform
   id: ID!
   name: String!
   games: [Game] @connection(keyName: "byPlatform", fields: ["id"])
+  short_name: String
 }
 
 type Publisher
@@ -73,7 +74,6 @@ type Type
   id: ID!
   name: String!
   games: [GameType] @connection(keyName: "byType", fields: ["id"])
-  short_name: String
 }
 
 type GameType

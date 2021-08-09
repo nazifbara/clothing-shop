@@ -11,6 +11,7 @@ export declare class Platform {
   readonly id: string;
   readonly name: string;
   readonly games?: (Game | null)[];
+  readonly short_name?: string;
   constructor(init: ModelInit<Platform>);
   static copyOf(source: Platform, mutator: (draft: MutableModel<Platform>) => MutableModel<Platform> | void): Platform;
 }
@@ -44,7 +45,6 @@ export declare class Type {
   readonly id: string;
   readonly name: string;
   readonly games?: (GameType | null)[];
-  readonly short_name?: string;
   constructor(init: ModelInit<Type>);
   static copyOf(source: Type, mutator: (draft: MutableModel<Type>) => MutableModel<Type> | void): Type;
 }
