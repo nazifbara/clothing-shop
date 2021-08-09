@@ -13,8 +13,8 @@ type Platform
   ) {
   id: ID!
   name: String!
-  games: [Game] @connection(keyName: "byPlatform", fields: ["id"])
   short_name: String
+  games: [Game] @connection(keyName: "byPlatform", fields: ["id"])
 }
 
 type Publisher
