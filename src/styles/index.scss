@@ -1,5 +1,8 @@
 @import 'variables';
 @import 'globals';
+
+// components
+@import 'accordion';
 @import 'header';
 @import 'game';
 @import 'game-list';
@@ -8,6 +11,9 @@
 @import 'message';
 @import 'admin-page';
 @import 'cart-page';
+
+// pages
 @import 'checkout-page';
 @import 'home-page';
+@import 'game-detail-page';
 @import 'order-success-page';
