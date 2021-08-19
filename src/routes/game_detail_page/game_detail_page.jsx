@@ -17,8 +17,6 @@ function GameDetailPage() {
   const isLoading = status === 'pending';
   const isResolved = status === 'resolved';
 
-  console.log(game);
-
   useEffect(() => {
     run(fetchGame(gameId));
   }, [run, gameId]);
