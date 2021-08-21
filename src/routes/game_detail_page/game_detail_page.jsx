@@ -23,7 +23,7 @@ function GameDetailPage() {
 
   return (
     <div className="container game-detail">
-      {isLoading && <span>loading..</span>}
+      {isLoading && <span>loading...</span>}
       {isResolved && (
         <>
           <h1 className="game-detail__title">
@@ -68,19 +68,15 @@ function GameDetailPage() {
             </div>
             <div className="info">
               <span>Type</span>
-              <span>
-                {game.types.items.reduce(
-                  (types, item) => types.type.name + ', ' + item.type.name
-                )}
-              </span>
+              <span>{displayTypes(game.types.items)}</span>
             </div>
             <div className="info">
-              <span>Recommended age</span>
-              <span>{game.recommended_age}</span>
+              <span>Recommanded age</span>
+              <span>{game.recommanded_age}</span>
             </div>
             <div className="info">
-              <span>Release data</span>
-              <span>{moment(game.release_date).format('MMMM M, YYYY')}</span>
+              <span>Release date</span>
+              <span>{moment(game.release_date).format('MMMM D, YYYY')}</span>
             </div>
             <div className="info">
               <span>Platform</span>
@@ -91,6 +87,16 @@ function GameDetailPage() {
       )}
     </div>
   );
+}
+
+function displayTypes(typeItems) {
+  if (typeItems.length === 0) {
+    return '';
+  } else if (typeItems.length === 1) {
+    return typeItems[0].type.name;
+  }
+
+  return typeItems.map((t) => t.type.name).join(', ');
 }
 
 async function fetchGame(gameId) {

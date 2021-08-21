@@ -7,7 +7,7 @@ export const getGame = /* GraphQL */ `
       trailerURL
       imageKey
       price
-      recommended_age
+      recommanded_age
       release_date
       platform {
         name
