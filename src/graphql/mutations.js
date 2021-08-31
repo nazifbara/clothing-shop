@@ -14,6 +14,7 @@ export const createPlatform = /* GraphQL */ `
     createPlatform(input: $input, condition: $condition) {
       id
       name
+      short_name
       _version
       _deleted
       _lastChangedAt
@@ -27,7 +28,7 @@ export const createPlatform = /* GraphQL */ `
           trailerURL
           imageKey
           price
-          recommended_age
+          recommanded_age
           release_date
           publisher_id
           platform_id
@@ -51,6 +52,7 @@ export const updatePlatform = /* GraphQL */ `
     updatePlatform(input: $input, condition: $condition) {
       id
       name
+      short_name
       _version
       _deleted
       _lastChangedAt
@@ -64,7 +66,7 @@ export const updatePlatform = /* GraphQL */ `
           trailerURL
           imageKey
           price
-          recommended_age
+          recommanded_age
           release_date
           publisher_id
           platform_id
@@ -88,6 +90,7 @@ export const deletePlatform = /* GraphQL */ `
     deletePlatform(input: $input, condition: $condition) {
       id
       name
+      short_name
       _version
       _deleted
       _lastChangedAt
@@ -101,7 +104,7 @@ export const deletePlatform = /* GraphQL */ `
           trailerURL
           imageKey
           price
-          recommended_age
+          recommanded_age
           release_date
           publisher_id
           platform_id
@@ -138,7 +141,7 @@ export const createPublisher = /* GraphQL */ `
           trailerURL
           imageKey
           price
-          recommended_age
+          recommanded_age
           release_date
           publisher_id
           platform_id
@@ -175,7 +178,7 @@ export const updatePublisher = /* GraphQL */ `
           trailerURL
           imageKey
           price
-          recommended_age
+          recommanded_age
           release_date
           publisher_id
           platform_id
@@ -212,7 +215,7 @@ export const deletePublisher = /* GraphQL */ `
           trailerURL
           imageKey
           price
-          recommended_age
+          recommanded_age
           release_date
           publisher_id
           platform_id
@@ -240,7 +243,7 @@ export const createGame = /* GraphQL */ `
       trailerURL
       imageKey
       price
-      recommended_age
+      recommanded_age
       release_date
       publisher_id
       platform_id
@@ -252,6 +255,7 @@ export const createGame = /* GraphQL */ `
       platform {
         id
         name
+        short_name
         _version
         _deleted
         _lastChangedAt
@@ -319,7 +323,7 @@ export const updateGame = /* GraphQL */ `
       trailerURL
       imageKey
       price
-      recommended_age
+      recommanded_age
       release_date
       publisher_id
       platform_id
@@ -331,6 +335,7 @@ export const updateGame = /* GraphQL */ `
       platform {
         id
         name
+        short_name
         _version
         _deleted
         _lastChangedAt
@@ -398,7 +403,7 @@ export const deleteGame = /* GraphQL */ `
       trailerURL
       imageKey
       price
-      recommended_age
+      recommanded_age
       release_date
       publisher_id
       platform_id
@@ -410,6 +415,7 @@ export const deleteGame = /* GraphQL */ `
       platform {
         id
         name
+        short_name
         _version
         _deleted
         _lastChangedAt
@@ -576,7 +582,7 @@ export const createGameType = /* GraphQL */ `
         trailerURL
         imageKey
         price
-        recommended_age
+        recommanded_age
         release_date
         publisher_id
         platform_id
@@ -588,6 +594,7 @@ export const createGameType = /* GraphQL */ `
         platform {
           id
           name
+          short_name
           _version
           _deleted
           _lastChangedAt
@@ -649,7 +656,7 @@ export const updateGameType = /* GraphQL */ `
         trailerURL
         imageKey
         price
-        recommended_age
+        recommanded_age
         release_date
         publisher_id
         platform_id
@@ -661,6 +668,7 @@ export const updateGameType = /* GraphQL */ `
         platform {
           id
           name
+          short_name
           _version
           _deleted
           _lastChangedAt
@@ -722,7 +730,7 @@ export const deleteGameType = /* GraphQL */ `
         trailerURL
         imageKey
         price
-        recommended_age
+        recommanded_age
         release_date
         publisher_id
         platform_id
@@ -734,6 +742,7 @@ export const deleteGameType = /* GraphQL */ `
         platform {
           id
           name
+          short_name
           _version
           _deleted
           _lastChangedAt
@@ -795,7 +804,7 @@ export const createGameOrder = /* GraphQL */ `
         trailerURL
         imageKey
         price
-        recommended_age
+        recommanded_age
         release_date
         publisher_id
         platform_id
@@ -807,6 +816,7 @@ export const createGameOrder = /* GraphQL */ `
         platform {
           id
           name
+          short_name
           _version
           _deleted
           _lastChangedAt
@@ -875,7 +885,7 @@ export const updateGameOrder = /* GraphQL */ `
         trailerURL
         imageKey
         price
-        recommended_age
+        recommanded_age
         release_date
         publisher_id
         platform_id
@@ -887,6 +897,7 @@ export const updateGameOrder = /* GraphQL */ `
         platform {
           id
           name
+          short_name
           _version
           _deleted
           _lastChangedAt
@@ -955,7 +966,7 @@ export const deleteGameOrder = /* GraphQL */ `
         trailerURL
         imageKey
         price
-        recommended_age
+        recommanded_age
         release_date
         publisher_id
         platform_id
@@ -967,6 +978,7 @@ export const deleteGameOrder = /* GraphQL */ `
         platform {
           id
           name
+          short_name
           _version
           _deleted
           _lastChangedAt

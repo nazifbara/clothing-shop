@@ -200,9 +200,7 @@ export const schema = {
             "attributes": [
                 {
                     "type": "model",
-                    "properties": {
-                        "subscriptions": null
-                    }
+                    "properties": {}
                 },
                 {
                     "type": "key",
@@ -300,8 +298,7 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {
-                        "queries": null,
-                        "subscriptions": null
+                        "queries": null
                     }
                 },
                 {
@@ -396,9 +393,7 @@ export const schema = {
             "attributes": [
                 {
                     "type": "model",
-                    "properties": {
-                        "subscriptions": null
-                    }
+                    "properties": {}
                 },
                 {
                     "type": "auth",
@@ -478,8 +473,7 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {
-                        "queries": null,
-                        "subscriptions": null
+                        "queries": null
                     }
                 },
                 {
@@ -616,9 +610,7 @@ export const schema = {
             "attributes": [
                 {
                     "type": "model",
-                    "properties": {
-                        "subscriptions": null
-                    }
+                    "properties": {}
                 },
                 {
                     "type": "key",

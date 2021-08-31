@@ -6,6 +6,7 @@ export const getPlatform = /* GraphQL */ `
     getPlatform(id: $id) {
       id
       name
+      short_name
       _version
       _deleted
       _lastChangedAt
@@ -19,7 +20,7 @@ export const getPlatform = /* GraphQL */ `
           trailerURL
           imageKey
           price
-          recommended_age
+          recommanded_age
           release_date
           publisher_id
           platform_id
@@ -45,6 +46,7 @@ export const listPlatforms = /* GraphQL */ `
       items {
         id
         name
+        short_name
         _version
         _deleted
         _lastChangedAt
@@ -76,6 +78,7 @@ export const syncPlatforms = /* GraphQL */ `
       items {
         id
         name
+        short_name
         _version
         _deleted
         _lastChangedAt
@@ -109,7 +112,7 @@ export const getPublisher = /* GraphQL */ `
           trailerURL
           imageKey
           price
-          recommended_age
+          recommanded_age
           release_date
           publisher_id
           platform_id
@@ -190,7 +193,7 @@ export const getGame = /* GraphQL */ `
       trailerURL
       imageKey
       price
-      recommended_age
+      recommanded_age
       release_date
       publisher_id
       platform_id
@@ -202,6 +205,7 @@ export const getGame = /* GraphQL */ `
       platform {
         id
         name
+        short_name
         _version
         _deleted
         _lastChangedAt
@@ -271,7 +275,7 @@ export const listGames = /* GraphQL */ `
         trailerURL
         imageKey
         price
-        recommended_age
+        recommanded_age
         release_date
         publisher_id
         platform_id
@@ -283,6 +287,7 @@ export const listGames = /* GraphQL */ `
         platform {
           id
           name
+          short_name
           _version
           _deleted
           _lastChangedAt
@@ -332,7 +337,7 @@ export const syncGames = /* GraphQL */ `
         trailerURL
         imageKey
         price
-        recommended_age
+        recommanded_age
         release_date
         publisher_id
         platform_id
@@ -344,6 +349,7 @@ export const syncGames = /* GraphQL */ `
         platform {
           id
           name
+          short_name
           _version
           _deleted
           _lastChangedAt
@@ -485,7 +491,7 @@ export const syncGameTypes = /* GraphQL */ `
           trailerURL
           imageKey
           price
-          recommended_age
+          recommanded_age
           release_date
           publisher_id
           platform_id
@@ -539,7 +545,7 @@ export const syncGameOrders = /* GraphQL */ `
           trailerURL
           imageKey
           price
-          recommended_age
+          recommanded_age
           release_date
           publisher_id
           platform_id
