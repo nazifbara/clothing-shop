@@ -11,12 +11,12 @@ import Game from '../../components/game';
 import Message from '../../components/message';
 import { useAsync } from '../../hooks';
 import { listGames } from '../../api/queries';
-import SpiderHero from '../../assets/spider-man-hero.jpeg';
-import UnchartedHero from '../../assets/uncharted4-hero.jpeg';
-import GodOfWarHero from '../../assets/god-of-war-hero.jpeg';
-import HorizonHero from '../../assets/horizon-zero-dawn-hero.jpeg';
-import DemonSoulHero from '../../assets/demon-soul-hero.jpeg';
-import RacketHero from '../../assets/ratchet-and-clank-hero.jpeg';
+import SpiderHero from '../../assets/spider-man-hero.jpg';
+import UnchartedHero from '../../assets/uncharted4-hero.jpg';
+import GodOfWarHero from '../../assets/god-of-war-hero.jpg';
+import HorizonHero from '../../assets/horizon-zero-dawn-hero.jpg';
+import DemonSoulHero from '../../assets/demon-soul-hero.jpg';
+import RacketHero from '../../assets/ratchet-and-clank-hero.jpg';
 
 SwiperCore.use([Autoplay]);
 
