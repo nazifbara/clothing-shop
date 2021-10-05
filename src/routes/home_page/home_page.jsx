@@ -11,17 +11,22 @@ import Game from '../../components/game';
 import Message from '../../components/message';
 import { useAsync } from '../../hooks';
 import { listGames } from '../../api/queries';
+import SpiderHero from '../../assets/spider-man-hero.jpeg';
+import UnchartedHero from '../../assets/uncharted4-hero.jpeg';
+import GodOfWarHero from '../../assets/god-of-war-hero.jpeg';
+import HorizonHero from '../../assets/horizon-zero-dawn-hero.jpeg';
+import DemonSoulHero from '../../assets/demon-soul-hero.jpeg';
+import RacketHero from '../../assets/ratchet-and-clank-hero.jpeg';
 
 SwiperCore.use([Autoplay]);
 
-const IMAGES_BASE_PATH = 'images/';
 const IMAGES_SRC = [
-  `${IMAGES_BASE_PATH}spider-man-hero.jpeg`,
-  `${IMAGES_BASE_PATH}uncharted4-hero.jpeg`,
-  `${IMAGES_BASE_PATH}god-of-war-hero.jpeg`,
-  `${IMAGES_BASE_PATH}horizon-zero-dawn-hero.jpeg`,
-  `${IMAGES_BASE_PATH}demon-soul-hero.jpeg`,
-  `${IMAGES_BASE_PATH}ratchet-and-clank-hero.jpeg`,
+  SpiderHero,
+  UnchartedHero,
+  GodOfWarHero,
+  HorizonHero,
+  DemonSoulHero,
+  RacketHero,
 ];
 
 function HomePage() {
