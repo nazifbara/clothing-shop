@@ -19,7 +19,7 @@ import { printPrice } from '../../utils';
 function CheckoutPage() {
   const { cartItems, getCartTotal, getItemTotal } = useCart();
   const [stripePromise] = useState(() =>
-    loadStripe('pk_test_gj7dXJ4Qc852MzYqINg6QULX')
+    loadStripe(process.env.STRIPE_PUBLIC_KEY)
   );
 
   return (
