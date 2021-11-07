@@ -19,7 +19,7 @@ import { printPrice } from '../../utils';
 function CheckoutPage() {
   const { cartItems, getCartTotal, getItemTotal } = useCart();
   const [stripePromise] = useState(() =>
-    loadStripe(process.env.STRIPE_PUBLIC_KEY)
+    loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
   );
 
   return (
@@ -60,8 +60,12 @@ function CheckoutPage() {
 function CheckoutForm({ stripe, elements }) {
   const { cartItems, getCartTotal, clearCart } = useCart();
   const history = useHistory();
-  const { status, run } = useAsync();
+  const { status, run, error } = useAsync();
   const [form, setForm] = useState(initialFormState);
+
+  if (error) {
+    console.error(error);
+  }
 
   useEffect(() => {
     if (status === 'resolved') {
