@@ -9,10 +9,14 @@ const palette = {
     light: '#111',
     contrast: '#fff',
   },
-  border: '#333',
 };
 
 const theme = {
+  cartBadge: {
+    background: palette.primary.main,
+    border: palette.background.main,
+    contrast: palette.background.main,
+  },
   appName: {
     color: palette.primary.main,
   },

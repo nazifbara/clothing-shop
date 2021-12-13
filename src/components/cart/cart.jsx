@@ -1,6 +1,8 @@
 import React from 'react';
-import { FiShoppingCart } from 'react-icons/fi';
+import { FiShoppingBag } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+
 import { useCart } from '../../context/cart_context';
 
 function Cart() {
@@ -9,11 +11,36 @@ function Cart() {
   const isCartEmpty = cartItems.length === 0;
 
   return (
-    <span className="cart" onClick={() => history.push('/cart')}>
-      {!isCartEmpty && <span className="cart__badge">{cartItems.length}</span>}
-      <FiShoppingCart />
-    </span>
+    <Container onClick={() => history.push('/cart')}>
+      {!isCartEmpty && <Badge>{cartItems.length}</Badge>}
+      <FiShoppingBag />
+    </Container>
   );
 }
+
+const Badge = styled.span``;
+const Container = styled.span`
+  cursor: pointer;
+  position: relative;
+
+  ${Badge} {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: ${({ theme }) => theme.app.cartBadge.contrast};
+    background-color: ${({ theme }) => theme.app.cartBadge.background};
+    padding-left: 0.156rem;
+    padding-right: 0.156rem;
+    border-radius: 50%;
+    border: 0.063rem solid ${({ theme }) => theme.app.cartBadge.border};
+    font-size: 0.75rem;
+    font-weight: 700;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+`;
 
 export default Cart;

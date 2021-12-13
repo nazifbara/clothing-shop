@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import { ReactComponent as Logo } from './logo.svg';
 import { MaxWidth } from '..';
-import Cart from '../../cart';
+import Cart from '../../Cart';
 
 const AppBar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState();
