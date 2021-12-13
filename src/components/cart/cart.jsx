@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { useCart } from '../../context/cart_context';
+import { IconButton } from '../IconButton';
 
 function Cart() {
   const history = useHistory();
@@ -12,8 +13,10 @@ function Cart() {
 
   return (
     <Container onClick={() => history.push('/cart')}>
-      {!isCartEmpty && <Badge>{cartItems.length}</Badge>}
-      <FiShoppingBag />
+      <IconButton>
+        {!isCartEmpty && <Badge>{cartItems.length}</Badge>}
+        <FiShoppingBag />
+      </IconButton>
     </Container>
   );
 }
@@ -25,8 +28,8 @@ const Container = styled.span`
 
   ${Badge} {
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
+    top: 0.8rem;
+    right: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
