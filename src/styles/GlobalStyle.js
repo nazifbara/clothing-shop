@@ -7,5 +7,5 @@ export default createGlobalStyle`
   body {
     font-family: 'Lato', sans-serif;
     background-color: ${({ theme }) => theme.app.body.background};
-    color: ${({ theme }) => theme.app.text};
+    color: ${({ theme }) => theme.app.body.contrast};
 `;

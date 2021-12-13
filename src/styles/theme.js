@@ -1,24 +1,27 @@
 const palette = {
   primary: {
-    dark: '#8c7974',
-    main: '#c9ada7',
-    light: '#d3bdb8',
-    contrast: '#000000',
+    dark: '#b2b2b2',
+    main: '#fff',
+    contrast: '#000',
   },
   background: {
-    dark: '#343346',
-    main: '#4B4965',
-    light: '#6f6d83',
-    contrast: '#ffffff',
+    main: '#000',
+    light: '#111',
+    contrast: '#fff',
   },
+  border: '#333',
 };
 
 const theme = {
+  appName: {
+    color: palette.primary.main,
+  },
   appBar: {
     background: palette.background.main,
   },
   body: {
     background: palette.background.main,
+    contrast: palette.background.contrast,
   },
 };
 
