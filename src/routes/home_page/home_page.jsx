@@ -4,8 +4,8 @@ import 'swiper/components/navigation/navigation.min.css';
 
 import { useEffect } from 'react';
 import { API, Storage } from 'aws-amplify';
-import GameList from '../../components/game_list';
-import Game from '../../components/game';
+import ProductList from '../../components/ProcuctList';
+import ProductCard from '../../components/ProductCard';
 import Message from '../../components/message';
 import { useAsync } from '../../hooks';
 import { listGames } from '../../api/queries';
@@ -25,9 +25,9 @@ function HomePage() {
       )}
       {status === 'pending' && <span>Loading...</span>}
       {status === 'resolved' && (
-        <GameList list={data}>
-          {(item) => <Game key={item.id} item={item} />}
-        </GameList>
+        <ProductList list={data}>
+          {(item) => <ProductCard key={item.id} item={item} />}
+        </ProductList>
       )}
     </section>
   );
