@@ -8,7 +8,7 @@ import ProductList from '../../components/ProcuctList';
 import ProductCard from '../../components/ProductCard';
 import Message from '../../components/message';
 import { useAsync } from '../../hooks';
-import { listGames } from '../../api/queries';
+import { listProducts } from '../../graphql/queries';
 
 function HomePage() {
   const { status, data, run } = useAsync();
@@ -34,10 +34,10 @@ function HomePage() {
 }
 
 async function fetchGames() {
-  const data = await API.graphql({ query: listGames, authMode: 'API_KEY' });
+  const data = await API.graphql({ query: listProducts, authMode: 'API_KEY' });
   const {
     data: {
-      listGames: { items },
+      listProducts: { items },
     },
   } = data;
   const signedGames = await getSignedGames(items);
@@ -47,7 +47,7 @@ async function fetchGames() {
 async function getSignedGames(games) {
   const signedGames = await Promise.all(
     games.map(async (item) => {
-      const signedUrl = await Storage.get(item.imageKey);
+      const signedUrl = await Storage.get(item.image);
       item.imageUrl = signedUrl;
       return item;
     })

@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authonlinegamestored9698489"
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "keyDescription": "api key description",
+        "expirationTime": 30
+      },
+      {
+        "mode": "AWS_IAM"
+      }
+    ],
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      }
+    },
+    "apiName": "onlinegamestore",
+    "gqlSchemaPath": "/tmp/amplify-9fa25243-9db1-413f-99d7-6e96928a1b0e/amplify/backend/api/onlinegamestore/schema.graphql"
+  }
+}

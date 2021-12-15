@@ -12,7 +12,7 @@ const ProductCard = ({ item }) => {
       <ImageBox ratio="190/240">
         <Image width="100%" alt="product" src={item.imageUrl} />
       </ImageBox>
-      <h3>{item.title}</h3>
+      <span>{item.name}</span>
       <span>
         <strong>{printPrice(item.price)}</strong>
       </span>
@@ -40,7 +40,7 @@ const Container = styled(Link)`
     color: inherit;
 
     img {
-      transform: scale(1.047);
+      transform: scale(1.1);
     }
   }
 `;
