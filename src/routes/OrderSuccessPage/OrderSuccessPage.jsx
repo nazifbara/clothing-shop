@@ -1,6 +1,7 @@
 import { FiCheckCircle } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import Button from '../../components/Button';
+
+import { Button } from '../../components';
 
 function OrderSuccessPage(props) {
   return (
