@@ -4,6 +4,11 @@ const palette = {
     main: '#fff',
     contrast: '#000',
   },
+  error: {
+    dark: '#d32f2f',
+    main: '#f44336',
+    light: '#e57373',
+  },
   background: {
     main: '#000',
     light: '#1e1e1e',
@@ -12,6 +17,18 @@ const palette = {
 };
 
 const theme = {
+  button: {
+    border: palette.primary.main,
+    background: palette.primary.main,
+    hoverBackground: palette.primary.dark,
+    error: palette.error.main,
+    errorContrast: palette.primary.main,
+    errorHoverBackground: palette.error.dark,
+    contrast: palette.background.main,
+  },
+  productImage: {
+    background: '#006466',
+  },
   productCard: {
     background: palette.background.light,
   },

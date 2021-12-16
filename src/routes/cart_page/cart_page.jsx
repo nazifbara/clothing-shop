@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FiPlusCircle, FiMinusCircle } from 'react-icons/fi';
-import Button from '../../components/button';
+import Button from '../../components/Button';
 import { useCart } from '../../context/cart_context';
 import { printPrice } from '../../utils';
 

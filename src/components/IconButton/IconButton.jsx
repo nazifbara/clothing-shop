@@ -8,8 +8,8 @@ const Container = styled.button`
   background-color: transparent;
   border: none;
   border-radius: 50%;
-  padding: 5px;
-  color: white;
+  padding: 0.313rem;
+  color: inherit;
 
   :focus {
     outline: none;

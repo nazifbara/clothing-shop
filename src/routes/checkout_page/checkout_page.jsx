@@ -10,11 +10,12 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useHistory } from 'react-router-dom';
 
 import useAsync from '../../hooks/use_async';
-import { processOrder } from '../../api/mutations';
 import { useCart } from '../../context/cart_context';
-import Button from '../../components/button';
+import Button from '../../components/Button';
 import Message from '../../components/message';
 import { printPrice } from '../../utils';
+
+const processOrder = {}; // TODO
 
 function CheckoutPage() {
   const { cartItems, getCartTotal, getItemTotal } = useCart();
