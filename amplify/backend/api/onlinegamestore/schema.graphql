@@ -1,4 +1,4 @@
-type Product @model @auth(rules: [{allow: private}]) {
+type Product @model @auth(rules: [{allow: private}, {allow: public, operations: [read]}]) {
   id: ID!
   name: String!
   description: String!

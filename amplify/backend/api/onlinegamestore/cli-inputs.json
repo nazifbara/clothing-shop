@@ -22,6 +22,6 @@
       }
     },
     "apiName": "onlinegamestore",
-    "gqlSchemaPath": "/tmp/amplify-9fa25243-9db1-413f-99d7-6e96928a1b0e/amplify/backend/api/onlinegamestore/schema.graphql"
+    "gqlSchemaPath": "/tmp/amplify-505e7fd2-805e-452c-8d18-a035e8df3a1f/amplify/backend/api/onlinegamestore/schema.graphql"
   }
 }
