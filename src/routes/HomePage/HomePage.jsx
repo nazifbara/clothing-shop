@@ -7,6 +7,7 @@ import { API, Storage } from 'aws-amplify';
 import { ProductList, ProductCard, Message } from '../../components';
 import { useAsync } from '../../hooks';
 import { listProducts } from '../../graphql/queries';
+import { MaxWidth } from '../../containers';
 
 function HomePage() {
   const { status, data, run } = useAsync();
@@ -15,7 +16,7 @@ function HomePage() {
   }, [run]);
 
   return (
-    <section className="container">
+    <MaxWidth>
       {status === 'rejected' && (
         <Message type="danger">
           Something went wrong. Please refresh the page.
@@ -27,7 +28,7 @@ function HomePage() {
           {(item) => <ProductCard key={item.id} item={item} />}
         </ProductList>
       )}
-    </section>
+    </MaxWidth>
   );
 }
 

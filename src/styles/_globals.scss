@@ -21,39 +21,6 @@ select:-webkit-autofill:focus {
   caret-color: $text-color;
 }
 
-body {
-  font-family: 'Lato', sans-serif;
-  padding-top: 50px;
-  color: $text-color;
-  background-color: $primary-color;
-}
-
-img {
-  max-width: 100%;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  text-align: left;
-  border-bottom: 1px solid $text-color;
-  padding: 0.5rem;
-}
-
-tr:nth-child(even) {
-  background-color: $bg-color;
-}
-
-.container {
-  padding: 15px;
-  margin: 0 auto;
-  max-width: 62.5rem;
-}
-
 .field {
   margin-bottom: 1.25rem;
   position: relative;

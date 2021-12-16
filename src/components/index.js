@@ -1,3 +1,5 @@
+export { default as QuantityPicker } from './QuantityPicker';
+export { default as Table } from './Table';
 export { default as AddToCart } from './AddToCart';
 export { default as Button } from './Button';
 export { default as Cart } from './Cart';

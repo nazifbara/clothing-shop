@@ -17,6 +17,9 @@ const palette = {
 };
 
 const theme = {
+  table: {
+    border: palette.primary.main,
+  },
   button: {
     border: palette.primary.main,
     background: palette.primary.main,

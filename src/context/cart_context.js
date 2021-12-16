@@ -15,11 +15,10 @@ export function CartProvider(props) {
   }
 
   function onItemAdd(cartItem) {
-    const { id, title, price } = cartItem;
-    const existingItemIndex = cartItems.findIndex((i) => i.id === id);
+    const existingItemIndex = cartItems.findIndex((i) => i.id === cartItem.id);
     if (existingItemIndex !== -1) return;
 
-    const newCartItems = [...cartItems, { id, title, price, quantity: 1 }];
+    const newCartItems = [...cartItems, { ...cartItem, quantity: 1 }];
     setCartItems(newCartItems);
   }
 
@@ -33,16 +32,14 @@ export function CartProvider(props) {
   }
 
   function onQuantityChange(cartItem, quantity) {
-    const { id, title, price } = cartItem;
-
     if (quantity === 0) {
       return;
     }
 
-    const itemIndex = cartItems.findIndex((i) => i.id === id);
+    const itemIndex = cartItems.findIndex((i) => i.id === cartItem.id);
     const newCartItems = [
       ...cartItems.slice(0, itemIndex),
-      { id, title, quantity, price },
+      { ...cartItem, quantity },
       ...cartItems.slice(itemIndex + 1),
     ];
     setCartItems(newCartItems);
