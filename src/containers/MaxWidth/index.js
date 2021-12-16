@@ -1,1 +1,1 @@
-export { default as MaxWidth } from './MaxWidth';
+export { default } from './MaxWidth';

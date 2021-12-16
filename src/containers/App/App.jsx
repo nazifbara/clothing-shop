@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { AppBar } from '..';
-import routes from '../../../routes';
-import { CartProvider } from '../../../context/cart_context';
-import ContentBox from '../../ContentBox';
+import routes from '../../routes';
+import { CartProvider } from '../../context/cart_context';
+import { ContentBox } from '..';
 
 function App() {
   return (

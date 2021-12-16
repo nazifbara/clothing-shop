@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { useCart } from '../../context/cart_context';
-import { IconButton } from '../IconButton';
+import { IconButton } from '..';
 
 function Cart() {
   const history = useHistory();
