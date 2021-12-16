@@ -7,8 +7,7 @@ import styled from 'styled-components';
 import { useAsync } from '../../hooks';
 import { getProduct } from '../../graphql/queries';
 import { printPrice } from '../../utils';
-import AddToCart from '../../components/add_to_cart';
-import ImageBox from '../../components/ImageBox';
+import { AddToCart, ImageBox } from '../../components/';
 import breakpoint from '../../styles/breakpoints';
 
 function ProductDetailPage() {

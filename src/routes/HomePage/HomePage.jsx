@@ -4,9 +4,7 @@ import 'swiper/components/navigation/navigation.min.css';
 
 import { useEffect } from 'react';
 import { API, Storage } from 'aws-amplify';
-import ProductList from '../../components/ProcuctList';
-import ProductCard from '../../components/ProductCard';
-import Message from '../../components/message';
+import { ProductList, ProductCard, Message } from '../../components';
 import { useAsync } from '../../hooks';
 import { listProducts } from '../../graphql/queries';
 

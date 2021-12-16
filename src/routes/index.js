@@ -1,7 +1,7 @@
-import CartPageRoute from './cart_page';
-import CheckoutPageRoute from './checkout_page';
-import HomePageRoute from './home_page';
-import OrderSuccessRoute from './order_success_page';
+import CartPageRoute from './CartPage';
+import CheckoutPageRoute from './CheckoutPage';
+import HomePageRoute from './HomePage';
+import OrderSuccessRoute from './OrderSuccessPage';
 import ProductDetailRoute from './ProductDetailPage';
 
 const routes = [
