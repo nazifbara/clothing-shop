@@ -2,17 +2,13 @@
 import { initSchema } from '@aws-amplify/datastore';
 import { schema } from './schema';
 
-const OrderStatus = {
-  "SUCCESS": "SUCCESS",
-  "FAILED": "FAILED"
-};
 
-const { Order, ProductOrder, Product, ProductImage } = initSchema(schema);
+
+const { Order, Product, ProductImage, ProductOrder } = initSchema(schema);
 
 export {
   Order,
-  ProductOrder,
   Product,
   ProductImage,
-  OrderStatus
+  ProductOrder
 };

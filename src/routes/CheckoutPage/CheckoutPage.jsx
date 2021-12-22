@@ -9,7 +9,7 @@ import {
 import { loadStripe } from '@stripe/stripe-js';
 import { useHistory } from 'react-router-dom';
 
-import { processOrder } from '../../graphql/mutations';
+import { processOrder } from '../../api/mutations';
 import useAsync from '../../hooks/use_async';
 import { useCart } from '../../context/cart_context';
 import { Button, Message, Table } from '../../components';

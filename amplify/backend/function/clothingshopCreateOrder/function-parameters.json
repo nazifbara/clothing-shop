@@ -1,0 +1,25 @@
+{
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "orderTableName",
+      "environmentVariableName": "ORDER_TABLE_NAME"
+    },
+    {
+      "cloudFormationParameterName": "productOrderTableName",
+      "environmentVariableName": "PRODUCT_ORDER_TABLE_NAME"
+    }
+  ],
+  "permissions": {
+    "storage": {
+      "Order:@model(appsync)": [
+        "create",
+        "read"
+      ],
+      "Product:@model(appsync)": [
+        "create",
+        "read"
+      ]
+    }
+  }
+}

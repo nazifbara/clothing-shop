@@ -1,6 +1,6 @@
 projects:
   onlinegamestore:
-    schemaPath: amplify/backend/api/onlinegamestore/build/schema.graphql
+    schemaPath: amplify/backend/api/clothingshop/build/schema.graphql
     includes:
       - src/graphql/**/*.js
     excludes:
@@ -12,7 +12,7 @@ projects:
         docsFilePath: src/graphql
         region: eu-west-2
         apiId: null
-        maxDepth: 3
+        maxDepth: 4
 extensions:
   amplify:
     version: 3

@@ -1,0 +1,54 @@
+type Order @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  country: String!
+  city: String!
+  address: String!
+  zipCode: String!
+  total: Int!
+  username: String!
+  date: AWSDateTime!
+  products: [Product] @manyToMany(relationName: "ProductOrder")
+}
+
+type ProductImage @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  key: String!
+  productID: ID @index(name: "byProduct")
+}
+
+type Product @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  name: String!
+  description: String!
+  price: Int!
+  ProductImages: [ProductImage] @hasMany(indexName: "byProduct", fields: ["id"])
+  Orders: [Order] @manyToMany(relationName: "ProductOrder")
+}
+
+type Mutation {
+  processOrder(input: ProcessOrderInput!): OrderStatus
+    @function(name: "clothingshopProcessPayment-${env}")
+    @function(name: "clothingshopCreateOrder-${env}")
+}
+
+enum OrderStatus {
+  SUCCESS
+  FAILED
+}
+
+input CartItem {
+  id: ID!
+  name: String
+  price: Int
+  quantity: Int
+}
+
+input ProcessOrderInput {
+  cart: [CartItem]
+  total: Int!
+  token: String!
+  country: String
+  city: String
+  zipCode: String
+  address: String
+}

@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3clothingshopstoragedpi8lly46iooe",
+  "bucketName": "clothingshop-storage-dpi8lly46iooe",
+  "policyUUID": "a8d703ae",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

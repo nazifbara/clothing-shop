@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "auth": {
+      "clothingshop": [
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": [],
+  "secretNames": [
+    "STRIPE_PRIVATE_KEY"
+  ]
+}
