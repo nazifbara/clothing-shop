@@ -9,12 +9,11 @@ import {
 import { loadStripe } from '@stripe/stripe-js';
 import { useHistory } from 'react-router-dom';
 
+import { processOrder } from '../../graphql/mutations';
 import useAsync from '../../hooks/use_async';
 import { useCart } from '../../context/cart_context';
-import { Button, Message } from '../../components';
+import { Button, Message, Table } from '../../components';
 import { printPrice } from '../../utils';
-
-const processOrder = {}; // TODO
 
 function CheckoutPage() {
   const { cartItems, getCartTotal, getItemTotal } = useCart();
@@ -24,10 +23,10 @@ function CheckoutPage() {
 
   return (
     <div className="container">
-      <h2>Checkout</h2>
+      <h1>Checkout</h1>
       <div className="checkout">
         <div style={{ marginBottom: '40px' }}>
-          <table>
+          <Table>
             <thead>
               <tr>
                 <th>Game</th>
@@ -38,13 +37,13 @@ function CheckoutPage() {
             <tbody>
               {cartItems.map((i) => (
                 <tr key={i.id}>
-                  <td>{i.title}</td>
+                  <td>{i.name}</td>
                   <td>{printPrice(getItemTotal(i))}</td>
                   <td>{i.quantity}</td>
                 </tr>
               ))}
             </tbody>
-          </table>
+          </Table>
           <span>Total : {printPrice(getCartTotal())}</span>
         </div>
         <div>
@@ -92,16 +91,17 @@ function CheckoutForm({ stripe, elements }) {
   async function process() {
     const card = elements.getElement(CardElement);
     const result = await stripe.createToken(card);
-    await API.graphql(
-      graphqlOperation(processOrder, {
+    await API.graphql({
+      ...graphqlOperation(processOrder, {
         input: {
           cart: cartItems,
           token: result.token.id,
           total: getCartTotal(),
           ...form,
         },
-      })
-    );
+      }),
+      authMode: 'AMAZON_COGNITO_USER_POOLS',
+    });
     clearCart();
   }
 

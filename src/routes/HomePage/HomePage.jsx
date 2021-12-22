@@ -6,13 +6,13 @@ import { useEffect } from 'react';
 import { API, Storage } from 'aws-amplify';
 import { ProductList, ProductCard, Message } from '../../components';
 import { useAsync } from '../../hooks';
-import { listProducts } from '../../graphql/queries';
+import { listProducts } from '../../api/queries';
 import { MaxWidth } from '../../containers';
 
 function HomePage() {
   const { status, data, run } = useAsync();
   useEffect(() => {
-    run(fetchGames());
+    run(fetchProducts());
   }, [run]);
 
   return (
@@ -32,26 +32,30 @@ function HomePage() {
   );
 }
 
-async function fetchGames() {
-  const data = await API.graphql({ query: listProducts, authMode: 'API_KEY' });
+async function fetchProducts() {
+  const data = await API.graphql({
+    query: listProducts,
+    authMode: 'API_KEY',
+  });
   const {
     data: {
       listProducts: { items },
     },
   } = data;
-  const signedGames = await getSignedGames(items);
-  return signedGames;
+  const signedProducts = await getSignedProducts(items);
+  return signedProducts;
 }
 
-async function getSignedGames(games) {
-  const signedGames = await Promise.all(
-    games.map(async (item) => {
-      const signedUrl = await Storage.get(item.image);
+async function getSignedProducts(products) {
+  const signedProducts = await Promise.all(
+    products.map(async (item) => {
+      const signedUrl = await Storage.get(item.ProductImages.items[0].key);
       item.imageUrl = signedUrl;
       return item;
     })
   );
-  return signedGames;
+
+  return signedProducts;
 }
 
 const route = {

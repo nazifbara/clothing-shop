@@ -5,7 +5,7 @@ import Image from 'react-graceful-image';
 import styled from 'styled-components';
 
 import { useAsync } from '../../hooks';
-import { getProduct } from '../../graphql/queries';
+import { getProduct } from '../../api/queries';
 import { printPrice } from '../../utils';
 import { AddToCart, ImageBox } from '../../components/';
 import breakpoint from '../../styles/breakpoints';
@@ -94,7 +94,7 @@ async function fetchProduct(id) {
     data: { getProduct: product },
   } = data;
 
-  const signedImageURL = await Storage.get(product.image);
+  const signedImageURL = await Storage.get(product.ProductImages.items[0].key);
   product.imageURL = signedImageURL;
 
   return product;
