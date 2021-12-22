@@ -26,5 +26,36 @@
         }
       }
     }
+  },
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-clothingshop-prod-150518-authRole",
+      "UnauthRoleArn": "arn:aws:iam::070468362108:role/amplify-clothingshop-prod-150518-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::070468362108:role/amplify-clothingshop-prod-150518-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-clothingshop-prod-150518-deployment",
+      "UnauthRoleName": "amplify-clothingshop-prod-150518-unauthRole",
+      "StackName": "amplify-clothingshop-prod-150518",
+      "StackId": "arn:aws:cloudformation:eu-west-2:070468362108:stack/amplify-clothingshop-prod-150518/33eb4740-6330-11ec-b1bc-02229ca029d4",
+      "AmplifyAppId": "dpi8lly46iooe"
+    },
+    "categories": {
+      "function": {
+        "clothingshopCreateOrder": {
+          "deploymentBucketName": "amplify-clothingshop-prod-150518-deployment",
+          "s3Key": "amplify-builds/clothingshopCreateOrder-2f4b786f4c5a482b5043-build.zip",
+          "orderTableName": "Order-4jw7ydjq2bcobnm6wzybpdo4tu",
+          "productOrderTableName": "ProductOrder-4jw7ydjq2bcobnm6wzybpdo4tu"
+        },
+        "clothingshopProcessPayment": {
+          "secretsPathAmplifyAppId": "dpi8lly46iooe",
+          "deploymentBucketName": "amplify-clothingshop-prod-150518-deployment",
+          "s3Key": "amplify-builds/clothingshopProcessPayment-6644676f614364326c54-build.zip"
+        }
+      },
+      "auth": {
+        "clothingshop": {}
+      }
+    }
   }
 }

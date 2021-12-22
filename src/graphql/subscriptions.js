@@ -17,32 +17,6 @@ export const onCreateOrder = /* GraphQL */ `
           id
           orderID
           productID
-          order {
-            id
-            country
-            city
-            address
-            zipCode
-            total
-            username
-            date
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
-          product {
-            id
-            name
-            description
-            price
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
           createdAt
           updatedAt
           _version
@@ -76,32 +50,6 @@ export const onUpdateOrder = /* GraphQL */ `
           id
           orderID
           productID
-          order {
-            id
-            country
-            city
-            address
-            zipCode
-            total
-            username
-            date
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
-          product {
-            id
-            name
-            description
-            price
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
           createdAt
           updatedAt
           _version
@@ -135,32 +83,6 @@ export const onDeleteOrder = /* GraphQL */ `
           id
           orderID
           productID
-          order {
-            id
-            country
-            city
-            address
-            zipCode
-            total
-            username
-            date
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
-          product {
-            id
-            name
-            description
-            price
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
           createdAt
           updatedAt
           _version
@@ -246,32 +168,6 @@ export const onCreateProduct = /* GraphQL */ `
           id
           orderID
           productID
-          order {
-            id
-            country
-            city
-            address
-            zipCode
-            total
-            username
-            date
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
-          product {
-            id
-            name
-            description
-            price
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
           createdAt
           updatedAt
           _version
@@ -315,32 +211,6 @@ export const onUpdateProduct = /* GraphQL */ `
           id
           orderID
           productID
-          order {
-            id
-            country
-            city
-            address
-            zipCode
-            total
-            username
-            date
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
-          product {
-            id
-            name
-            description
-            price
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
           createdAt
           updatedAt
           _version
@@ -384,32 +254,6 @@ export const onDeleteProduct = /* GraphQL */ `
           id
           orderID
           productID
-          order {
-            id
-            country
-            city
-            address
-            zipCode
-            total
-            username
-            date
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
-          product {
-            id
-            name
-            description
-            price
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
           createdAt
           updatedAt
           _version
@@ -443,16 +287,6 @@ export const onCreateProductOrder = /* GraphQL */ `
         username
         date
         products {
-          items {
-            id
-            orderID
-            productID
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
           nextToken
           startedAt
         }
@@ -468,30 +302,10 @@ export const onCreateProductOrder = /* GraphQL */ `
         description
         price
         ProductImages {
-          items {
-            id
-            key
-            productID
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
           nextToken
           startedAt
         }
         Orders {
-          items {
-            id
-            orderID
-            productID
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
           nextToken
           startedAt
         }
@@ -525,16 +339,6 @@ export const onUpdateProductOrder = /* GraphQL */ `
         username
         date
         products {
-          items {
-            id
-            orderID
-            productID
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
           nextToken
           startedAt
         }
@@ -550,30 +354,10 @@ export const onUpdateProductOrder = /* GraphQL */ `
         description
         price
         ProductImages {
-          items {
-            id
-            key
-            productID
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
           nextToken
           startedAt
         }
         Orders {
-          items {
-            id
-            orderID
-            productID
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
           nextToken
           startedAt
         }
@@ -607,16 +391,6 @@ export const onDeleteProductOrder = /* GraphQL */ `
         username
         date
         products {
-          items {
-            id
-            orderID
-            productID
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
           nextToken
           startedAt
         }
@@ -632,30 +406,10 @@ export const onDeleteProductOrder = /* GraphQL */ `
         description
         price
         ProductImages {
-          items {
-            id
-            key
-            productID
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
           nextToken
           startedAt
         }
         Orders {
-          items {
-            id
-            orderID
-            productID
-            createdAt
-            updatedAt
-            _version
-            _deleted
-            _lastChangedAt
-          }
           nextToken
           startedAt
         }

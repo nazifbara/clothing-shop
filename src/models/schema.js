@@ -102,7 +102,7 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "private",
+                                "allow": "public",
                                 "operations": [
                                     "create",
                                     "update",
@@ -278,7 +278,7 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "private",
+                                "allow": "public",
                                 "operations": [
                                     "create",
                                     "update",
@@ -354,7 +354,15 @@ export const schema = {
             ]
         }
     },
-    "enums": {},
+    "enums": {
+        "OrderStatus": {
+            "name": "OrderStatus",
+            "values": [
+                "SUCCESS",
+                "FAILED"
+            ]
+        }
+    },
     "nonModels": {},
     "version": "5182226da1e5da1c1ae1019a58942e87"
 };
