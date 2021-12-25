@@ -1,7 +1,12 @@
 const palette = {
   primary: {
-    dark: '#b2b2b2',
-    main: '#fff',
+    main: '#4B4965',
+    dark: '#343346',
+    contrast: '#fff',
+  },
+  secondary: {
+    main: '#E7AA93',
+    dark: '#C3907D',
     contrast: '#000',
   },
   error: {
@@ -9,46 +14,38 @@ const palette = {
     main: '#f44336',
     light: '#e57373',
   },
-  background: {
-    main: '#000',
-    light: '#1e1e1e',
-    contrast: '#fff',
-  },
 };
 
 const theme = {
   table: {
-    border: palette.primary.main,
+    border: '#fff',
   },
   button: {
-    border: palette.primary.main,
-    background: palette.primary.main,
-    hoverBackground: palette.primary.dark,
+    border: '#fff',
+    background: palette.secondary.main,
+    hoverBackground: palette.secondary.dark,
+    contrast: palette.secondary.contrast,
     error: palette.error.main,
-    errorContrast: palette.primary.main,
+    errorContrast: '#fff',
     errorHoverBackground: palette.error.dark,
-    contrast: palette.background.main,
   },
   productImage: {
-    background: '#006466',
+    background: 'transparent',
   },
   productCard: {
-    background: palette.background.light,
+    background: palette.primary.dark,
   },
   cartBadge: {
-    background: palette.primary.main,
-    border: palette.background.main,
-    contrast: palette.background.main,
-  },
-  appName: {
-    color: palette.primary.main,
+    background: palette.error.main,
+    border: palette.primary.main,
+    contrast: '#fff',
   },
   appBar: {
-    background: palette.background.main,
+    background: 'transparent',
   },
   body: {
-    background: palette.background.main,
-    contrast: palette.background.contrast,
+    background: palette.primary.main,
+    contrast: palette.primary.contrast,
   },
 };
 
