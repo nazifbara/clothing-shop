@@ -52,13 +52,13 @@ const ProductDetail = styled.div`
 `;
 
 const ProductImage = styled(ImageBox)`
-  height: 60vh;
+  height: 40vh;
   padding: 1rem 0;
   width: 100%;
   background-color: ${({ theme }) => theme.app.productImage.background};
 
   @media ${breakpoint.device.md} {
-    height: 90vh;
+    height: 50vh;
     width: 60%;
   }
 `;
