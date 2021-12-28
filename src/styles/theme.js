@@ -17,6 +17,10 @@ const palette = {
 };
 
 const theme = {
+  textField: {
+    backgroundColor: palette.primary.main,
+    borderColor: '#fff',
+  },
   table: {
     border: '#fff',
   },
@@ -41,7 +45,7 @@ const theme = {
     contrast: '#fff',
   },
   appBar: {
-    background: 'transparent',
+    background: palette.primary.main,
   },
   body: {
     background: palette.primary.main,

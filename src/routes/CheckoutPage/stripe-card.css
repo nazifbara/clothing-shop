@@ -1,0 +1,25 @@
+.field {
+  margin-bottom: 1.25rem;
+  position: relative;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.field label {
+  display: block;
+  font-size: 0.875rem;
+  position: absolute;
+  top: -0.5rem;
+  left: 0.5rem;
+  background-color: #4b4965;
+  padding: 0 0.1875rem;
+}
+
+.field .input {
+  background-color: #4b4965;
+  border-radius: 0.313rem;
+  border: 0.125rem solid #fff;
+  color: inherit;
+  padding: 0.625rem;
+  width: 100%;
+}

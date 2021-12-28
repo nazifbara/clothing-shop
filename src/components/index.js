@@ -1,3 +1,4 @@
+export { default as TextField } from './TextField';
 export { default as QuantityPicker } from './QuantityPicker';
 export { default as Table } from './Table';
 export { default as AddToCart } from './AddToCart';

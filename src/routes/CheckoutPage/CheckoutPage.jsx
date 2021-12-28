@@ -8,12 +8,17 @@ import {
 } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+
+import './stripe-card.css';
 
 import { processOrder } from '../../api/mutations';
 import useAsync from '../../hooks/use_async';
 import { useCart } from '../../context/cart_context';
-import { Button, Message, Table } from '../../components';
+import { Button, Message, Table, TextField } from '../../components';
+import { MaxWidth } from '../../containers';
 import { printPrice } from '../../utils';
+import breakpoints from '../../styles/breakpoints';
 
 function CheckoutPage() {
   const { cartItems, getCartTotal, getItemTotal } = useCart();
@@ -22,10 +27,10 @@ function CheckoutPage() {
   );
 
   return (
-    <div className="container">
+    <MaxWidth>
       <h1>Checkout</h1>
-      <div className="checkout">
-        <div style={{ marginBottom: '40px' }}>
+      <CheckoutContainer>
+        <div>
           <Table>
             <thead>
               <tr>
@@ -51,10 +56,25 @@ function CheckoutPage() {
             <InjectedCheckoutForm />
           </Elements>
         </div>
-      </div>
-    </div>
+      </CheckoutContainer>
+    </MaxWidth>
   );
 }
+
+const CheckoutContainer = styled.div`
+  @media ${breakpoints.device.md} {
+    & {
+      display: flex;
+      align-items: flex-start;
+      margin: 0.625rem 0.625rem;
+    }
+
+    & > div {
+      width: 50%;
+      padding: 1.5rem 0.625rem;
+    }
+  }
+`;
 
 function CheckoutForm({ stripe, elements }) {
   const { cartItems, getCartTotal, clearCart } = useCart();
@@ -107,48 +127,39 @@ function CheckoutForm({ stripe, elements }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="field">
-        <label htmlFor="country">Country </label>
-        <input
-          value={form.country}
-          onChange={handlInputChange}
-          className="input"
-          required
-          name="country"
-          id="country"
-        />
-      </div>
-      <div className="field">
-        <label htmlFor="city">City </label>
-        <input
-          value={form.city}
-          onChange={handlInputChange}
-          className="input"
-          name="city"
-          id="city"
-        />
-      </div>
-      <div className="field">
-        <label htmlFor="zipCode">ZIP-CODE </label>
-        <input
-          value={form.zipCode}
-          onChange={handlInputChange}
-          className="input"
-          name="zipCode"
-          id="zipCode"
-        />
-      </div>
-      <div className="field">
-        <label htmlFor="address">Address </label>
-        <input
-          value={form.address}
-          onChange={handlInputChange}
-          className="input"
-          required
-          name="address"
-          id="address"
-        />
-      </div>
+      <TextField
+        labelText="Country"
+        value={form.country}
+        onChange={handlInputChange}
+        required
+        name="country"
+        id="country"
+      />
+
+      <TextField
+        labelText="City"
+        value={form.city}
+        onChange={handlInputChange}
+        required
+        name="city"
+        id="city"
+      />
+      <TextField
+        labelText="Zip Code"
+        value={form.zipCode}
+        onChange={handlInputChange}
+        required
+        name="zipCode"
+        id="zipCode"
+      />
+      <TextField
+        labelText="Address"
+        value={form.address}
+        onChange={handlInputChange}
+        required
+        name="address"
+        id="address"
+      />
       <p style={{ color: 'green', marginBottom: '10px' }}>
         Enter 4242424242424242 - 08/30 - 123 - 12345
       </p>
@@ -159,8 +170,8 @@ function CheckoutForm({ stripe, elements }) {
           options={{
             style: {
               base: {
-                backgroundColor: '#0d1b2a',
-                color: '#edf2f4',
+                backgroundColor: '#4b4965',
+                color: '#fff',
               },
             },
           }}
@@ -172,9 +183,6 @@ function CheckoutForm({ stripe, elements }) {
           Something went wrong. Please refresh the page and try again
         </Message>
       )}
-      {/* {status === 'resolved' && (
-        <Message type="success">Successfully ordered</Message>
-      )} */}
     </form>
   );
 }
