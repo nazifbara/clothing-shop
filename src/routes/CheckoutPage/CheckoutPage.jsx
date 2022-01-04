@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
-import { withAuthenticator } from '@aws-amplify/ui-react';
+import { Authenticator } from '@aws-amplify/ui-react';
+import { Hub, Auth } from 'aws-amplify';
 import {
   Elements,
   CardElement,
@@ -25,38 +26,74 @@ function CheckoutPage() {
   const [stripePromise] = useState(() =>
     loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
   );
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    Hub.listen('auth', (data) => {
+      switch (data.payload.event) {
+        case 'signIn':
+          setIsAuthenticated(true);
+          break;
+        case 'signOut':
+          setIsAuthenticated(false);
+          break;
+        default:
+          break;
+      }
+    });
+    Auth.currentAuthenticatedUser()
+      .then(() => setIsAuthenticated(true))
+      .catch(() => setIsAuthenticated(false));
+
+    return () => {
+      Hub.remove('auth');
+    };
+  }, []);
 
   return (
     <MaxWidth>
-      <h1>Checkout</h1>
-      <CheckoutContainer>
-        <div>
-          <Table>
-            <thead>
-              <tr>
-                <th>Game</th>
-                <th>Price</th>
-                <th>Quantity</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cartItems.map((i) => (
-                <tr key={i.id}>
-                  <td>{i.name}</td>
-                  <td>{printPrice(getItemTotal(i))}</td>
-                  <td>{i.quantity}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-          <span>Total : {printPrice(getCartTotal())}</span>
+      {!isAuthenticated && (
+        <div style={{ textAlign: 'center', color: 'greenyellow' }}>
+          <div style={{ color: 'orangered' }}>Use Test User</div>
+          <div>username: elonmusk</div>
+          <div>password: VjIURjjd$jS9</div>
         </div>
-        <div>
-          <Elements stripe={stripePromise}>
-            <InjectedCheckoutForm />
-          </Elements>
-        </div>
-      </CheckoutContainer>
+      )}
+      <Authenticator initialState="signIn">
+        {() => (
+          <>
+            <h1>Checkout</h1>
+            <CheckoutContainer>
+              <div>
+                <Table>
+                  <thead>
+                    <tr>
+                      <th>Game</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cartItems.map((i) => (
+                      <tr key={i.id}>
+                        <td>{i.name}</td>
+                        <td>{printPrice(getItemTotal(i))}</td>
+                        <td>{i.quantity}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+                <span>Total : {printPrice(getCartTotal())}</span>
+              </div>
+              <div>
+                <Elements stripe={stripePromise}>
+                  <InjectedCheckoutForm />
+                </Elements>
+              </div>
+            </CheckoutContainer>
+          </>
+        )}
+      </Authenticator>
     </MaxWidth>
   );
 }
@@ -207,7 +244,7 @@ const initialFormState = {
 const route = {
   routeProps: {
     path: '/checkout',
-    component: withAuthenticator(CheckoutPage),
+    component: CheckoutPage,
   },
   name: 'CheckoutPage',
 };

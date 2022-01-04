@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.scss';
 import 'normalize.css/normalize.css';
+import '@aws-amplify/ui-react/styles.css';
 import { App } from './containers';
 import Amplify from 'aws-amplify';
 import reportWebVitals from './reportWebVitals';
