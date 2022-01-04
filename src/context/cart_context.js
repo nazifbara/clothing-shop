@@ -17,7 +17,7 @@ export function CartProvider(props) {
   function onItemAdd(cartItem) {
     // match the CartItem input schema
     const { id, name, price } = cartItem;
-    const existingItemIndex = cartItems.findIndex((i) => id === cartItem.id);
+    const existingItemIndex = cartItems.findIndex((i) => i.id === cartItem.id);
     if (existingItemIndex !== -1) return;
 
     const newCartItems = [...cartItems, { id, name, price, quantity: 1 }];
