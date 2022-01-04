@@ -58,8 +58,15 @@ const ProductImage = styled(ImageBox)`
   background-color: ${({ theme }) => theme.app.productImage.background};
 
   @media ${breakpoint.device.md} {
-    height: 50vh;
     width: 60%;
+  }
+
+  @media ${breakpoint.device.md} {
+    height: 60vh;
+  }
+
+  @media ${breakpoint.device.lg} {
+    height: 90vh;
   }
 `;
 
