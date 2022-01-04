@@ -74,6 +74,7 @@ const ProductInfo = styled.div`
   width: 40%;
   padding: 0;
   width: 100%;
+  white-space: pre-wrap;
   margin-top: 1.2rem;
 
   > * {
