@@ -1,11 +1,14 @@
 import { all, put, takeLatest } from 'redux-saga/effects';
 import { API, Storage } from 'aws-amplify';
 
-import { listProducts } from '../api/queries';
+import { listProducts, getProduct } from '../api/queries';
 import {
   loadProducts,
   loadProductsSuccess,
   loadProductsError,
+  loadProductSuccess,
+  loadProductError,
+  loadProduct,
 } from '../slices/product';
 
 // ===========================================================================
@@ -17,9 +20,21 @@ function* fetchProducts() {
     const products = yield getProducts();
     yield put(loadProductsSuccess({ products }));
   } catch (error) {
-    console.error({ fetchProducts: error.message });
+    console.error({ fetchProducts: error });
     yield put(
       loadProductsError('Something went wrong... Please refresh the page')
+    );
+  }
+}
+
+function* fetchProduct({ payload }) {
+  try {
+    const product = yield _getProduct(payload.productId);
+    yield put(loadProductSuccess({ product }));
+  } catch (error) {
+    console.error({ fetchProduct: error });
+    yield put(
+      loadProductError('Something went wrong... Please refresh the page')
     );
   }
 }
@@ -27,6 +42,20 @@ function* fetchProducts() {
 // ===========================================================================
 // Helpers
 // ===========================================================================
+
+const _getProduct = async (id) => {
+  const data = await API.graphql({
+    query: getProduct,
+    variables: { id },
+    authMode: 'API_KEY',
+  });
+  const {
+    data: { getProduct: product },
+  } = data;
+  const signedProduct = (await signProducts([product]))[0];
+
+  return signedProduct;
+};
 
 const getProducts = async () => {
   const data = await API.graphql({
@@ -59,7 +88,10 @@ const signProducts = async (products) => {
 // ===========================================================================
 
 function* rootSaga() {
-  yield all([takeLatest(loadProducts.type, fetchProducts)]);
+  yield all([
+    takeLatest(loadProduct.type, fetchProduct),
+    takeLatest(loadProducts.type, fetchProducts),
+  ]);
 }
 
 export default rootSaga;

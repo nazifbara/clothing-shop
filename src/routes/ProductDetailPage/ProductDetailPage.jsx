@@ -1,32 +1,54 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { API, graphqlOperation, Storage } from 'aws-amplify';
 import Image from 'react-graceful-image';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { useAsync } from '../../hooks';
-import { getProduct } from '../../api/queries';
+import { getProducts } from '../../selectors';
+import { loadProduct } from '../../slices/product';
 import { printPrice } from '../../utils';
-import { AddToCart, ImageBox } from '../../components/';
+import { AddToCart, ImageBox, Message } from '../../components/';
 import breakpoint from '../../styles/breakpoints';
 
 function ProductDetailPage() {
-  const { data: product, run, status } = useAsync();
+  // ===========================================================================
+  // Selectors
+  // ===========================================================================
+
+  const { product, loading, error } = useSelector(getProducts);
+
+  // ===========================================================================
+  // Dispatch
+  // ===========================================================================
+
+  const dispatch = useDispatch();
+
+  const _loadProduct = (productId) => dispatch(loadProduct({ productId }));
+
+  // ===========================================================================
+  // State
+  // ===========================================================================
+
   const { productId } = useParams();
-  const isLoading = status === 'pending';
-  const isResolved = status === 'resolved';
+
+  // ===========================================================================
+  // Hooks
+  // ===========================================================================
 
   useEffect(() => {
-    run(fetchProduct(productId));
-  }, [run, productId]);
+    _loadProduct(productId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [productId]);
 
   return (
     <>
-      {isLoading && <span>loading...</span>}
-      {isResolved && (
+      {error && <Message type="danger">{error}</Message>}
+      {loading && <span>loading...</span>}
+
+      {product && (
         <ProductDetail>
           <ProductImage>
-            <Image src={product.imageURL} alt={`${product.name} cover`} />
+            <Image src={product.imageUrl} alt={`${product.name} cover`} />
           </ProductImage>
           <ProductInfo>
             <h2>{product.name}</h2>
@@ -92,21 +114,6 @@ const ProductPrice = styled.span`
   font-weight: 700;
   font-size: 1.75rem;
 `;
-
-async function fetchProduct(id) {
-  const data = await API.graphql({
-    ...graphqlOperation(getProduct, { id }),
-    authMode: 'API_KEY',
-  });
-  const {
-    data: { getProduct: product },
-  } = data;
-
-  const signedImageURL = await Storage.get(product.ProductImages.items[0].key);
-  product.imageURL = signedImageURL;
-
-  return product;
-}
 
 const route = {
   routeProps: {
