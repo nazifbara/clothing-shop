@@ -1,17 +1,45 @@
+import { useDispatch, useSelector } from 'react-redux';
+
+import { addProduct, removeProduct } from '../../slices/cart';
+import { getCart } from '../../selectors';
 import Button from '../Button/Button';
-import { useCart } from '../../context/cart_context';
 
 function AddToCart({ item }) {
-  const { cartItems, onItemAdd, onItemRemove } = useCart();
-  const existingCartItem = cartItems.findIndex((i) => i.id === item.id);
+  // ===========================================================================
+  // Selectors
+  // ===========================================================================
+
+  const { items } = useSelector(getCart);
+
+  // ===========================================================================
+  // Dispatch
+  // ===========================================================================
+
+  const dispatch = useDispatch();
+
+  const _addProduct = (product) => dispatch(addProduct(product));
+  const _removeProduct = (product) => dispatch(removeProduct(product));
+
+  // ===========================================================================
+  // Handlers
+  // ===========================================================================
+
+  const addProductHanlder = () => _addProduct(item);
+  const removeProductHandler = () => _removeProduct(item);
+
+  // ===========================================================================
+  // Other
+  // ===========================================================================
+
+  const existingCartItem = items.findIndex((i) => i.id === item.id);
   const isItemInCart = existingCartItem !== -1;
 
   return isItemInCart ? (
-    <Button type="danger" onClick={() => onItemRemove(item)}>
+    <Button type="danger" onClick={removeProductHandler}>
       Remove from cart
     </Button>
   ) : (
-    <Button onClick={() => onItemAdd(item)}>Add to cart</Button>
+    <Button onClick={addProductHanlder}>Add to cart</Button>
   );
 }
 

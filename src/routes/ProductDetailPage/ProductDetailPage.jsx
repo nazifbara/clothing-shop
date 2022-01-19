@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getProducts } from '../../selectors';
 import { loadProduct } from '../../slices/product';
-import { printPrice } from '../../utils';
+import { printPrice } from '../../utils/helpers';
 import { AddToCart, ImageBox, Message } from '../../components/';
 import breakpoint from '../../styles/breakpoints';
 

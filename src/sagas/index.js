@@ -1,7 +1,14 @@
-import { all, put, takeLatest } from 'redux-saga/effects';
+import { all, put, takeLatest, select } from 'redux-saga/effects';
 import { API, Storage } from 'aws-amplify';
 
 import { listProducts, getProduct } from '../api/queries';
+import {
+  addProduct,
+  removeProduct,
+  clearCart,
+  changeQuantity,
+} from '../slices/cart';
+import { getCart } from '../selectors';
 import {
   loadProducts,
   loadProductsSuccess,
@@ -14,6 +21,11 @@ import {
 // ===========================================================================
 // Sagas
 // ===========================================================================
+
+function* saveCart() {
+  const { items } = yield select(getCart);
+  localStorage.setItem('cart', JSON.stringify(items));
+}
 
 function* fetchProducts() {
   try {
@@ -89,6 +101,15 @@ const signProducts = async (products) => {
 
 function* rootSaga() {
   yield all([
+    takeLatest(
+      [
+        addProduct.type,
+        removeProduct.type,
+        clearCart.type,
+        changeQuantity.type,
+      ],
+      saveCart
+    ),
     takeLatest(loadProduct.type, fetchProduct),
     takeLatest(loadProducts.type, fetchProducts),
   ]);

@@ -3,7 +3,7 @@ export { default as QuantityPicker } from './QuantityPicker';
 export { default as Table } from './Table';
 export { default as AddToCart } from './AddToCart';
 export { default as Button } from './Button';
-export { default as Cart } from './Cart';
+export { default as CartButton } from './CartButton';
 export { default as IconButton } from './IconButton';
 export { default as ImageBox } from './ImageBox';
 export { default as Message } from './Message';

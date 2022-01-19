@@ -10,19 +10,40 @@ import {
 import { loadStripe } from '@stripe/stripe-js';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
 
 import './stripe-card.css';
 
+import { clearCart } from '../../slices/cart';
+import { getCart } from '../../selectors';
 import { processOrder } from '../../api/mutations';
 import useAsync from '../../hooks/use_async';
-import { useCart } from '../../context/cart_context';
 import { Button, Message, Table, TextField } from '../../components';
 import { MaxWidth } from '../../containers';
-import { printPrice } from '../../utils';
+import { printPrice, getCartTotal, getItemTotal } from '../../utils/helpers';
 import breakpoints from '../../styles/breakpoints';
 
 function CheckoutPage() {
-  const { cartItems, getCartTotal, getItemTotal } = useCart();
+  // ===========================================================================
+  // Selectors
+  // ===========================================================================
+
+  const { items } = useSelector(getCart);
+
+  // ===========================================================================
+  // Dispatch
+  // ===========================================================================
+
+  const dispatch = useDispatch();
+
+  const _clearCart = () => dispatch(clearCart());
+
+  // ===========================================================================
+  // Other
+  // ===========================================================================
+
+  const cartTotal = getCartTotal(items);
+
   const [stripePromise] = useState(() =>
     loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
   );
@@ -74,7 +95,7 @@ function CheckoutPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {cartItems.map((i) => (
+                    {items.map((i) => (
                       <tr key={i.id}>
                         <td>{i.name}</td>
                         <td>{printPrice(getItemTotal(i))}</td>
@@ -83,11 +104,15 @@ function CheckoutPage() {
                     ))}
                   </tbody>
                 </Table>
-                <span>Total : {printPrice(getCartTotal())}</span>
+                <span>Total : {printPrice(cartTotal)}</span>
               </div>
               <div>
                 <Elements stripe={stripePromise}>
-                  <InjectedCheckoutForm />
+                  <InjectedCheckoutForm
+                    cartItems={items}
+                    cartTotal={cartTotal}
+                    clearCart={_clearCart}
+                  />
                 </Elements>
               </div>
             </CheckoutContainer>
@@ -113,8 +138,11 @@ const CheckoutContainer = styled.div`
   }
 `;
 
-function CheckoutForm({ stripe, elements }) {
-  const { cartItems, getCartTotal, clearCart } = useCart();
+function CheckoutForm({ stripe, elements, cartItems, cartTotal, clearCart }) {
+  // ===========================================================================
+  // State
+  // ===========================================================================
+
   const history = useHistory();
   const { status, run, error } = useAsync();
   const [form, setForm] = useState(initialFormState);
@@ -123,11 +151,19 @@ function CheckoutForm({ stripe, elements }) {
     console.error(error);
   }
 
+  // ===========================================================================
+  // Hooks
+  // ===========================================================================
+
   useEffect(() => {
     if (status === 'resolved') {
       history.push('/order-success');
     }
   }, [status, history]);
+
+  // ===========================================================================
+  // Handlers
+  // ===========================================================================
 
   function handleSubmit(e) {
     const { address, country } = form;
@@ -138,12 +174,16 @@ function CheckoutForm({ stripe, elements }) {
     run(process());
   }
 
-  function handlInputChange({ target: { name, value } }) {
+  function handleInputChange({ target: { name, value } }) {
     setForm((f) => ({
       ...form,
       [name]: value,
     }));
   }
+
+  // ===========================================================================
+  // Other
+  // ===========================================================================
 
   async function process() {
     const card = elements.getElement(CardElement);
@@ -153,7 +193,7 @@ function CheckoutForm({ stripe, elements }) {
         input: {
           cart: cartItems,
           token: result.token.id,
-          total: getCartTotal(),
+          total: cartTotal,
           ...form,
         },
       }),
@@ -167,7 +207,7 @@ function CheckoutForm({ stripe, elements }) {
       <TextField
         labelText="Country"
         value={form.country}
-        onChange={handlInputChange}
+        onChange={handleInputChange}
         required
         name="country"
         id="country"
@@ -176,7 +216,7 @@ function CheckoutForm({ stripe, elements }) {
       <TextField
         labelText="City"
         value={form.city}
-        onChange={handlInputChange}
+        onChange={handleInputChange}
         required
         name="city"
         id="city"
@@ -184,7 +224,7 @@ function CheckoutForm({ stripe, elements }) {
       <TextField
         labelText="Zip Code"
         value={form.zipCode}
-        onChange={handlInputChange}
+        onChange={handleInputChange}
         required
         name="zipCode"
         id="zipCode"
@@ -192,7 +232,7 @@ function CheckoutForm({ stripe, elements }) {
       <TextField
         labelText="Address"
         value={form.address}
-        onChange={handlInputChange}
+        onChange={handleInputChange}
         required
         name="address"
         id="address"
@@ -224,11 +264,11 @@ function CheckoutForm({ stripe, elements }) {
   );
 }
 
-function InjectedCheckoutForm() {
+function InjectedCheckoutForm(props) {
   return (
     <ElementsConsumer>
       {({ stripe, elements }) => (
-        <CheckoutForm stripe={stripe} elements={elements} />
+        <CheckoutForm stripe={stripe} elements={elements} {...props} />
       )}
     </ElementsConsumer>
   );
