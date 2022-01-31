@@ -35,9 +35,11 @@ function HomePage() {
       {error && <Message type="danger">{error}</Message>}
       {loading && <span>Loading...</span>}
 
-      <ProductList list={products}>
-        {(item) => <ProductCard key={item.id} item={item} />}
-      </ProductList>
+      {!loading && (
+        <ProductList list={products}>
+          {(item) => <ProductCard key={item.id} item={item} />}
+        </ProductList>
+      )}
     </MaxWidth>
   );
 }
