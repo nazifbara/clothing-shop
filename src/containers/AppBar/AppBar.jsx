@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import { ReactComponent as Logo } from './logo.svg';
 import { MaxWidth } from '..';
-import { Cart, IconButton } from '../../components';
+import { CartButton, IconButton } from '../../components';
 
 const AppBar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState();
@@ -46,7 +46,7 @@ const AppBar = () => {
           </Link>
           <div>
             <Action>
-              <Cart />
+              <CartButton />
               {isAuthenticated ? (
                 <IconButton
                   onClick={signOut}

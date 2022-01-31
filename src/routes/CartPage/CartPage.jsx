@@ -1,21 +1,45 @@
 import { Link } from 'react-router-dom';
 import { FiX } from 'react-icons/fi';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { getCart } from '../../selectors';
+import { removeProduct, changeQuantity } from '../../slices/cart';
 import { Button, Table, IconButton, QuantityPicker } from '../../components';
-import { useCart } from '../../context/cart_context';
-import { printPrice } from '../../utils';
+import { printPrice, getCartTotal, getItemTotal } from '../../utils/helpers';
 import { MaxWidth } from '../../containers';
 
 function CartPage() {
-  const {
-    cartItems,
-    onItemRemove,
-    onQuantityChange,
-    getCartTotal,
-    getItemTotal,
-  } = useCart();
+  // ===========================================================================
+  // Selectors
+  // ===========================================================================
 
-  if (getCartTotal() === 0) {
+  const { items } = useSelector(getCart);
+
+  // ===========================================================================
+  // Dispatch
+  // ===========================================================================
+
+  const dispatch = useDispatch();
+
+  const _removeProduct = (product) => dispatch(removeProduct(product));
+  const _changeQuantity = (product, quantity) =>
+    dispatch(changeQuantity({ product, quantity }));
+
+  // ===========================================================================
+  // Handlers
+  // ===========================================================================
+
+  const removeHanlder = (product) => () => _removeProduct(product);
+  const quantityHandler = (product, quantity) => () =>
+    _changeQuantity(product, quantity);
+
+  // ===========================================================================
+  // Other
+  // ===========================================================================
+
+  const cartTotal = getCartTotal(items);
+
+  if (cartTotal === 0) {
     return (
       <MaxWidth>
         <h2>Your cart is currently empty.</h2>
@@ -41,10 +65,10 @@ function CartPage() {
           </tr>
         </thead>
         <tbody>
-          {cartItems.map((i) => (
+          {items.map((i) => (
             <tr key={i.id}>
               <td>
-                <IconButton onClick={() => onItemRemove(i)}>
+                <IconButton onClick={removeHanlder(i)}>
                   <FiX fontSize={30} />
                 </IconButton>
               </td>
@@ -56,8 +80,8 @@ function CartPage() {
                 <div className="qty-picker">
                   <QuantityPicker
                     quantity={i.quantity}
-                    onIncrease={() => onQuantityChange(i, i.quantity + 1)}
-                    onDecrease={() => onQuantityChange(i, i.quantity - 1)}
+                    onIncrease={quantityHandler(i, i.quantity + 1)}
+                    onDecrease={quantityHandler(i, i.quantity - 1)}
                   />
                 </div>
               </td>
@@ -68,7 +92,7 @@ function CartPage() {
       </Table>
       <div style={{ margin: '15px 0', fontSize: '20px' }}>
         <p>
-          <strong>Total: {printPrice(getCartTotal())}</strong>
+          <strong>Total: {printPrice(cartTotal)}</strong>
         </p>
       </div>
       <Button>

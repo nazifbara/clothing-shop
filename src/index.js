@@ -10,19 +10,35 @@ import config from './aws-exports';
 import dotenv from 'dotenv';
 import { ThemeProvider } from 'styled-components';
 import { defaultRebootTheme } from 'styled-reboot';
+import createSagaMiddleware from '@redux-saga/core';
+import { Provider as ReduxProvider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
 
 import GlobalStyle from './styles/GlobalStyle';
 import theme from './styles/theme';
+import rootSaga from './sagas';
+import rootReducer from './slices';
+
+const sagaMiddleware = createSagaMiddleware();
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
+  devTools: true,
+});
 
 dotenv.config();
 Amplify.configure(config);
+sagaMiddleware.run(rootSaga);
 
 const Root = () => {
   return (
-    <ThemeProvider theme={{ ...defaultRebootTheme, app: theme }}>
-      <GlobalStyle />
-      <App />
-    </ThemeProvider>
+    <ReduxProvider store={store}>
+      <ThemeProvider theme={{ ...defaultRebootTheme, app: theme }}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
+    </ReduxProvider>
   );
 };
 

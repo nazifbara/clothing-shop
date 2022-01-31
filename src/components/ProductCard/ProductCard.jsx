@@ -3,7 +3,7 @@ import Image from 'react-graceful-image';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { printPrice } from '../../utils';
+import { printPrice } from '../../utils/helpers';
 import ImageBox from '../ImageBox';
 
 const ProductCard = ({ item }) => {
